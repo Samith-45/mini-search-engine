@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Java 21 Virtual Threads and Structured Concurrency",
+    "content": "Java 21 introduces Virtual Threads (Project Loom), dramatically simplifying concurrent programming on the JVM. Virtual threads are lightweight threads managed by the Java Virtual Machine rather than the underlying operating system. This allows applications to spawn millions of virtual threads with low memory footprint, eliminating the need for complex reactive programming paradigms. Structured concurrency further unifies task lifecycles across multiple child threads.",
+    "url": "https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html",
+    "category": "Documentation",
+    "tags": "Java, Concurrency, JVM, Virtual Threads",
+    "author": "OpenJDK Team"
+  },
+  {
+    "title": "Understanding Inverted Indexes in Information Retrieval",
+    "content": "An inverted index is the fundamental data structure used by search engines to map words or terms to their occurrence locations within a collection of documents. Unlike a forward index which maps documents to words, an inverted index enables near instantaneous query candidate retrieval. Key components include dictionary term lookup, posting lists with term frequencies, positional offsets, and document frequency metrics.",
+    "url": "https://searchforge.dev/articles/inverted-index-guide",
+    "category": "Articles",
+    "tags": "Search, Algorithms, Inverted Index, Data Structures",
+    "author": "Staff Engineer"
+  },
+  {
+    "title": "Okapi BM25 Ranking Algorithm Derivation and Tuning",
+    "content": "Okapi BM25 is a state-of-the-art non-linear ranking function used in information retrieval. BM25 improves upon classical TF-IDF by incorporating term frequency saturation (controlled by parameter k1) and document length normalization (controlled by parameter b). The term frequency saturation prevents documents with repeated keyword spamming from dominating search results, while length normalization adjusts scores based on document word count relative to average document length.",
+    "url": "https://searchforge.dev/articles/bm25-ranking-explained",
+    "category": "Articles",
+    "tags": "BM25, Ranking, Search Engine, Mathematics",
+    "author": "Search Architect"
+  },
+  {
+    "title": "Spring Boot 3 Architecture & Microservices Best Practices",
+    "content": "Spring Boot 3 provides a robust framework for building production-grade Java microservices. Key features include native compilation with GraalVM, Spring Framework 6 baseline, automated configuration, Spring Data JPA repositories, Spring Validation, Actuator metric exposure, and REST API controllers with Spring Web. Proper layering into controllers, services, repositories, and domain models ensures maintainable clean code architecture.",
+    "url": "https://spring.io/projects/spring-boot",
+    "category": "Documentation",
+    "tags": "Spring Boot, Java, REST API, Architecture",
+    "author": "Spring Community"
+  },
+  {
+    "title": "PostgreSQL Indexing: B-Trees, GIN, and Hash Indexes",
+    "content": "PostgreSQL supports multiple index types optimized for different query patterns. B-Tree indexes excel at equality and range queries on scalar data types. Generalized Inverted Indexes (GIN) are specifically designed for indexing composite values such as arrays, full-text search documents, and JSONB structures. Understanding index execution plans with EXPLAIN ANALYZE is critical for database query optimization.",
+    "url": "https://postgresql.org/docs/current/indexes.html",
+    "category": "Documentation",
+    "tags": "Database, PostgreSQL, Indexing, SQL",
+    "author": "Postgres Core Devs"
+  },
+  {
+    "title": "Redis Caching Strategies: Cache-Aside vs Write-Through",
+    "content": "Redis is an in-memory key-value data store frequently used for query caching and session management. In the Cache-Aside pattern, the application checks Redis first; on a cache miss, it reads from the primary database and populates Redis with an expiration TTL. Redis supports data structures including Strings, Hashes, Lists, Sets, Sorted Sets, and HyperLogLogs for high-throughput sub-millisecond lookups.",
+    "url": "https://redis.io/docs/manual/client-side-caching/",
+    "category": "Projects",
+    "tags": "Redis, Caching, Memory, Systems",
+    "author": "DevOps Lead"
+  },
+  {
+    "title": "Trie Data Structure for High-Speed Autocomplete Engine",
+    "content": "A Trie (prefix tree) is a specialized tree data structure used to locate specific keys within a set. In autocomplete search systems, a Trie provides O(L) time complexity for string insertions and prefix searches, where L is the query length. Nodes store character references along with term completion frequencies, allowing fast retrieval of top-k suggestions.",
+    "url": "https://searchforge.dev/articles/trie-autocomplete",
+    "category": "Articles",
+    "tags": "Trie, Autocomplete, Data Structures, Algorithms",
+    "author": "Algorithm Specialist"
+  },
+  {
+    "title": "Distributed Systems: CAP Theorem and PACELC Extensions",
+    "content": "The CAP theorem states that a distributed data store can simultaneously provide at most two out of three guarantees: Consistency, Availability, and Partition Tolerance. The PACELC theorem extends this by stating that even in the absence of network partitions (E), a distributed system must choose between Latency (L) and Consistency (C).",
+    "url": "https://searchforge.dev/articles/distributed-systems-consistency",
+    "category": "Articles",
+    "tags": "Distributed Systems, Consistency, CAP Theorem, Database",
+    "author": "System Architect"
+  },
+  {
+    "title": "Next.js 14 App Router, React Server Components & Tailwind CSS",
+    "content": "Next.js 14 introduces the App Router architecture built on React Server Components (RSC). RSCs allow components to render on the server, reducing JavaScript bundle sizes sent to the client. Combined with Tailwind CSS for utility-first styling and TypeScript for strict type checking, Next.js provides a modern frontend platform for high-performance web applications.",
+    "url": "https://nextjs.org/docs",
+    "category": "Documentation",
+    "tags": "Next.js, React, Tailwind CSS, Frontend",
+    "author": "Frontend Core Team"
+  },
+  {
+    "title": "Operating Systems: Process Scheduling and Virtual Memory Management",
+    "content": "Modern operating systems manage system hardware resources via process scheduling algorithms such as Round Robin, Completely Fair Scheduler (CFS), and Priority Scheduling. Virtual memory uses page tables and Memory Management Units (MMU) to isolate address spaces, enabling demand paging and swapping between RAM and secondary storage.",
+    "url": "https://searchforge.dev/articles/os-concepts",
+    "category": "Articles",
+    "tags": "Operating Systems, Memory, Kernel, Computer Science",
+    "author": "OS Engineering Group"
+  },
+  {
+    "title": "Computer Networks: TCP/IP Stack, HTTP/3, and QUIC Protocol",
+    "content": "The TCP/IP protocol stack forms the communication backbone of the Internet. HTTP/3 builds on QUIC, a transport layer network protocol designed by Google using UDP. QUIC eliminates head-of-line blocking present in HTTP/2 over TCP, provides built-in TLS 1.3 encryption, and enables seamless connection migration across IP address changes.",
+    "url": "https://searchforge.dev/articles/networking-http3-quic",
+    "category": "Articles",
+    "tags": "Networking, TCP, HTTP/3, QUIC, Protocols",
+    "author": "Network Systems Engineer"
+  },
+  {
+    "title": "Machine Learning Fundamentals: Vector Search & Embeddings",
+    "content": "Vector search represents documents and queries as high-dimensional dense vectors using neural embedding models. Approximate Nearest Neighbor (ANN) search algorithms such as Hierarchical Navigable Small World (HNSW) graphs and Inverted File Index (IVF) allow fast semantic similarity searches complementing traditional lexical inverted indexes.",
+    "url": "https://searchforge.dev/articles/ml-embeddings-vector-search",
+    "category": "Projects",
+    "tags": "Machine Learning, Vector Search, AI, Embeddings",
+    "author": "AI Research Team"
+  }
+]

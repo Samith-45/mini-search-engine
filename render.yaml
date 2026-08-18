@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: searchforge-backend
+    env: docker
+    dockerfilePath: ./docker/Dockerfile.backend
+    context: ./backend
+    plan: free
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: searchforge-db
+          property: connectionString
+      - key: SPRING_REDIS_HOST
+        fromService:
+          type: redis
+          name: searchforge-redis
+          property: host
+
+databases:
+  - name: searchforge-db
+    plan: free
+    databaseName: searchforgedb
+    user: searchforge
+
+  - type: redis
+    name: searchforge-redis
+    plan: free
+    ipAllowList: []
