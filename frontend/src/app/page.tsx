@@ -8,11 +8,11 @@ import { Search, Cpu, Database, Layers, ArrowRight, Zap, Code2, ShieldCheck, Pla
 
 export default function LandingPage() {
   const sampleQueries = [
-    'java 21 virtual threads',
-    'inverted index algorithm',
-    'bm25 ranking explained',
-    'postgresql gin index',
-    'redis caching strategies'
+    'neetcode 150 roadmap',
+    'system design roadmap',
+    'leetcode dsa preparation',
+    'java 21 backend roadmap',
+    'python ai ml roadmap'
   ];
 
   return (

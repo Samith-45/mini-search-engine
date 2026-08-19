@@ -22,7 +22,7 @@ function SearchResultsContent() {
   const [algorithm, setAlgorithm] = useState(algoParam);
   const [activeCategory, setActiveCategory] = useState(categoryParam);
 
-  const categories = ['All', 'Articles', 'Documentation', 'Projects'];
+  const categories = ['All', 'Roadmaps', 'Articles', 'Documentation', 'Projects'];
 
   useEffect(() => {
     if (!queryParam) return;

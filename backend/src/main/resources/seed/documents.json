@@ -1,5 +1,69 @@
 [
   {
+    "title": "NeetCode 150 & LeetCode DSA Complete Preparation Roadmap",
+    "content": "A structured step-by-step roadmap to master Data Structures and Algorithms for FAANG/Google interviews using NeetCode, LeetCode, and GeeksforGeeks. Stage 1: Core Fundamentals (Arrays & Hashing, Two Pointers, Sliding Window). Stage 2: Linear Data Structures (Stack, Monotonic Stack, Linked Lists, Fast & Slow Pointers). Stage 3: Binary Search on Values & Arrays. Stage 4: Non-Linear Structures (Binary Trees, BST, Tries, Heap / Priority Queue). Stage 5: Advanced Search (Backtracking, Graphs, BFS/DFS, Topological Sort, Dijkstra). Stage 6: Dynamic Programming (1D DP, 2D DP, Knapsack, Longest Common Subsequence). Practice systematically by solving the NeetCode 150 playlist, tracking patterns on LeetCode, and reading GeeksforGeeks for standard library implementations.",
+    "url": "https://neetcode.io/roadmap",
+    "category": "Roadmaps",
+    "tags": "DSA, NeetCode, LeetCode, GeeksforGeeks, Interview Preparation, Algorithms",
+    "author": "NeetCode Community"
+  },
+  {
+    "title": "System Design (HLD & LLD) Step-by-Step Interview Roadmap",
+    "content": "Mastering High-Level Design (HLD) and Low-Level Design (LLD) for software engineering roles. Phase 1: Distributed Systems Basics (Client-Server, DNS, Load Balancers, Reverse Proxy Nginx). Phase 2: Databases & Storage (SQL vs NoSQL, Sharding, Replication, CAP Theorem, Indexing B-Trees/GIN). Phase 3: Caching & Message Queues (Redis Cache-Aside, Kafka, RabbitMQ). Phase 4: Object-Oriented LLD (SOLID Principles, Factory, Strategy, Observer, Singleton, Decorator Patterns on GeeksforGeeks). Phase 5: Standard Interview Cases (URL Shortener TinyURL, Web Crawler, Rate Limiter, Search Autocomplete, Distributed Cache). Recommended resources: Designing Data-Intensive Applications (DDIA), ByteByteGo, and GitHub System Design Primer.",
+    "url": "https://github.com/donnemartin/system-design-primer",
+    "category": "Roadmaps",
+    "tags": "System Design, HLD, LLD, Architecture, Redis, Kafka, Scalability",
+    "author": "System Architect"
+  },
+  {
+    "title": "Java 21 & Backend Engineering Career Roadmap",
+    "content": "Comprehensive step-by-step roadmap for modern Java backend engineers. Step 1: Java 21 Core Mastery (OOP, Generics, Collections Framework, Streams API, Lambdas, Virtual Threads Project Loom). Step 2: Spring Boot 3 Ecosystem (Spring MVC, REST APIs, Dependency Injection, Validation, Spring Data JPA / Hibernate ORM). Step 3: Persistence & Caching (PostgreSQL with Flyway migrations, Redis caching). Step 4: Security & Testing (Spring Security, JWT OAuth2, JUnit 5, Mockito, Testcontainers). Step 5: Containerization & Cloud (Docker multi-stage builds, Kubernetes, GitHub Actions CI/CD). Practice building real full-stack systems with Spring Boot and Next.js.",
+    "url": "https://roadmap.sh/java",
+    "category": "Roadmaps",
+    "tags": "Java, Spring Boot, Backend, Roadmaps, Microservices, PostgreSQL",
+    "author": "Backend Engineering Group"
+  },
+  {
+    "title": "Python & Full-Stack AI/ML Engineering Roadmap",
+    "content": "Step-by-step guide to mastering Python for backend APIs and Machine Learning. Step 1: Modern Python 3.12 (PEP 695 typing, OOP, Generators, Asyncio concurrent event loops). Step 2: Problem Solving with Python on LeetCode & GeeksforGeeks (Bisect, Heapq, Collections Counter/Deque). Step 3: High-Speed Web APIs (FastAPI, Pydantic v2, SQLAlchemy 2.0). Step 4: Data Science & AI Core (NumPy array vectorization, Pandas DataFrames, PyTorch deep learning). Step 5: Generative AI & Vector Search (LangChain, Hugging Face Transformers, RAG architectures with Vector Databases like Milvus and Pinecone).",
+    "url": "https://roadmap.sh/python",
+    "category": "Roadmaps",
+    "tags": "Python, AI, Machine Learning, FastAPI, PyTorch, LeetCode, Roadmaps",
+    "author": "AI & Python Guild"
+  },
+  {
+    "title": "CS Fundamentals Mastery Roadmap: OS, DBMS, Computer Networks",
+    "content": "A rigorous university and interview preparation roadmap for core CS subjects. 1. Operating Systems: Process Scheduling (CFS, Round Robin), Thread Synchronization (Mutex, Semaphores), Deadlock Avoidance, Virtual Memory Paging. 2. Database Management Systems (DBMS): ACID Properties, Transaction Isolation Levels, B-Tree and Hash Indexing, Normalization 1NF to BCNF, SQL Query Optimization. 3. Computer Networks: OSI 7-layer and TCP/IP stack, TCP 3-way handshake, UDP, DNS resolution, TLS/HTTPS encryption, HTTP/1.1 vs HTTP/2 vs HTTP/3 (QUIC). Study resources include GeeksforGeeks CS Subjects, Gate Smashers, and OSDev Wiki.",
+    "url": "https://www.geeksforgeeks.org/computer-science-projects/",
+    "category": "Roadmaps",
+    "tags": "Computer Science, OS, DBMS, Networks, GeeksforGeeks, Roadmaps",
+    "author": "CSE Academic Committee"
+  },
+  {
+    "title": "Full-Stack Web Development Roadmap: Next.js 14, React & TypeScript",
+    "content": "Step-by-step modern frontend and full-stack engineering guide. Phase 1: Semantic HTML5, CSS Grid, Flexbox, Responsive Design. Phase 2: Modern JavaScript (ES6+, Promises, Event Loop, Closures, DOM APIs). Phase 3: TypeScript (Strict Typing, Generics, Utility Types, Interfaces). Phase 4: React 18/19 (Hooks, Context, Custom Hooks, State Management with Zustand). Phase 5: Next.js 14 (App Router, Server Components RSC, Server Actions, Dynamic Routing, Tailwind CSS). Phase 6: API Integration & Performance (SWR/React Query, Web Vitals optimization, Lighthouse audits).",
+    "url": "https://roadmap.sh/full-stack",
+    "category": "Roadmaps",
+    "tags": "Next.js, React, TypeScript, Frontend, Web Development, Roadmaps",
+    "author": "Frontend Lead"
+  },
+  {
+    "title": "DevOps, Cloud & Kubernetes Roadmap for Developers",
+    "content": "Practical infrastructure and deployment guide for software engineers. Stage 1: Linux CLI & Bash Scripting (Permissions, Systemd, Process Management). Stage 2: Networking for DevOps (CIDR, Subnets, Reverse Proxies, SSL/TLS Certbot). Stage 3: Containerization (Docker, Multi-stage Dockerfiles, Docker Compose). Stage 4: Container Orchestration (Kubernetes Pods, Deployments, Services, ConfigMaps, Ingress). Stage 5: CI/CD Pipelines (GitHub Actions, Automated Testing, Semantic Versioning). Stage 6: Cloud Platforms (AWS EC2/ECS/S3 or GCP Compute/Cloud Run, Terraform IaC).",
+    "url": "https://roadmap.sh/devops",
+    "category": "Roadmaps",
+    "tags": "DevOps, Docker, Kubernetes, Cloud, CI/CD, AWS, Roadmaps",
+    "author": "DevOps Guild"
+  },
+  {
+    "title": "Competitive Programming & Problem-Solving Mastery on LeetCode & GFG",
+    "content": "A tactical guide to cracking coding rounds on LeetCode, GeeksforGeeks, and Codeforces. Learn to classify problems by algorithmic paradigm: Divide & Conquer, Dynamic Programming, Greedy choice, Two Pointers, Graph Traversals (DFS/BFS), and Bit Manipulation. Master time complexity analysis (Big-O notation) and space complexity trade-offs. Practice top interview questions on LeetCode (Blind 75, Striver A2Z Sheet, GFG Top 50 DSA Problems) under timed conditions to develop speed and clean code hygiene.",
+    "url": "https://leetcode.com/explore/",
+    "category": "Roadmaps",
+    "tags": "LeetCode, GeeksforGeeks, DSA, Competitive Programming, Interviews, Roadmaps",
+    "author": "Competitive Programming Lead"
+  },
+  {
     "title": "Java 21 Virtual Threads and Structured Concurrency",
     "content": "Java 21 introduces Virtual Threads (Project Loom), dramatically simplifying concurrent programming on the JVM. Virtual threads are lightweight threads managed by the Java Virtual Machine rather than the underlying operating system. This allows applications to spawn millions of virtual threads with low memory footprint, eliminating the need for complex reactive programming paradigms. Structured concurrency further unifies task lifecycles across multiple child threads.",
     "url": "https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html",
