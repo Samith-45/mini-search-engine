@@ -372,18 +372,42 @@ function getFallbackSearchResponse(
   size: number,
   category = 'All'
 ): SearchResponse {
-  const cleanTerms = query
+  const cleanTerms = (query || '')
     .toLowerCase()
     .replace(/[^\w\s]/g, ' ')
     .split(/\s+/)
     .filter(t => t.length > 0 && t !== 'and' && t !== 'or');
 
-  const isAnd = query.toUpperCase().includes(' AND ');
+  const isAnd = (query || '').toUpperCase().includes(' AND ');
 
   const scoredDocs: SearchResultItem[] = [];
 
   for (const doc of ALL_DOCUMENTS) {
     if (category && category !== 'All' && doc.category.toLowerCase() !== category.toLowerCase()) {
+      continue;
+    }
+
+    if (cleanTerms.length === 0) {
+      // Browse mode: return all documents in category
+      scoredDocs.push({
+        id: doc.id,
+        title: doc.title,
+        contentSnippet: doc.content.substring(0, 180) + '...',
+        url: doc.url,
+        category: doc.category,
+        tags: doc.tags,
+        author: doc.author,
+        score: 1.0,
+        matchedTerms: [],
+        explanation: {
+          docId: doc.id,
+          algorithmName: algorithm,
+          finalScore: 1.0,
+          documentLength: doc.content.split(/\s+/).length,
+          averageDocumentLength: 124.0,
+          termExplanations: {}
+        }
+      });
       continue;
     }
 
@@ -436,15 +460,17 @@ function getFallbackSearchResponse(
     }
   }
 
-  scoredDocs.sort((a, b) => b.score - a.score);
+  if (cleanTerms.length > 0) {
+    scoredDocs.sort((a, b) => b.score - a.score);
+  }
 
   const fromIndex = (page - 1) * size;
   const pagedResults = scoredDocs.slice(fromIndex, fromIndex + size);
 
   return {
-    query,
+    query: query || '',
     algorithm,
-    executionTimeMs: 3,
+    executionTimeMs: 2,
     totalResults: scoredDocs.length,
     page,
     size,

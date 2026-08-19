@@ -37,11 +37,38 @@ public class SearchService {
     }
 
     public SearchResponseDTO search(String query, String algorithm, int page, int size, String categoryFilter) {
+        String algoName = (algorithm != null && algorithm.equalsIgnoreCase("TF-IDF")) ? "TF-IDF" : "BM25";
+
+        // Handle Category Browse mode when query is empty or blank
         if (query == null || query.isBlank()) {
-            return new SearchResponseDTO(query, algorithm, 0, 0, page, size, false, Collections.emptyList());
+            List<DocumentEntity> allDocs = documentService.getAllDocuments();
+            if (categoryFilter != null && !categoryFilter.isBlank() && !categoryFilter.equalsIgnoreCase("All")) {
+                allDocs = allDocs.stream()
+                        .filter(d -> categoryFilter.equalsIgnoreCase(d.getCategory()))
+                        .toList();
+            }
+
+            int total = allDocs.size();
+            int from = Math.min((page - 1) * size, total);
+            int to = Math.min(from + size, total);
+            List<DocumentEntity> paged = (from < total) ? allDocs.subList(from, to) : Collections.emptyList();
+
+            List<SearchResultItemDTO> items = paged.stream().map(doc -> new SearchResultItemDTO(
+                    doc.getId(),
+                    doc.getTitle(),
+                    doc.getContent().substring(0, Math.min(180, doc.getContent().length())) + "...",
+                    doc.getUrl(),
+                    doc.getCategory(),
+                    doc.getTags(),
+                    doc.getAuthor(),
+                    1.0,
+                    Collections.emptyList(),
+                    null
+            )).toList();
+
+            return new SearchResponseDTO(query != null ? query : "", algoName, 2, total, page, size, false, items);
         }
 
-        String algoName = (algorithm != null && algorithm.equalsIgnoreCase("TF-IDF")) ? "TF-IDF" : "BM25";
         String cacheKey = query.trim().toLowerCase() + ":" + algoName + ":" + page + ":" + size + ":" + (categoryFilter != null ? categoryFilter : "");
 
         // 1. Check Cache

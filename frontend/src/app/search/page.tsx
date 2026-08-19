@@ -25,8 +25,6 @@ function SearchResultsContent() {
   const categories = ['All', 'Roadmaps', 'Articles', 'Documentation', 'Projects'];
 
   useEffect(() => {
-    if (!queryParam) return;
-
     let isMounted = true;
     setLoading(true);
 
