@@ -22,7 +22,7 @@ function SearchResultsContent() {
   const [algorithm, setAlgorithm] = useState(algoParam);
   const [activeCategory, setActiveCategory] = useState(categoryParam);
 
-  const categories = ['All', 'Roadmaps', 'Certifications', 'Articles', 'Documentation', 'Projects'];
+  const categories = ['All', 'AI & LLM Tools', 'Roadmaps', 'Certifications', 'Systems & Architecture', 'Documentation', 'Articles', 'Projects'];
 
   useEffect(() => {
     let isMounted = true;
