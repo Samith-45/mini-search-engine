@@ -64,6 +64,86 @@
     "author": "Competitive Programming Lead"
   },
   {
+    "title": "AWS Certified Solutions Architect & Developer Associate (Coursera & Simplilearn)",
+    "content": "Official preparation guide and certification roadmap for AWS Certified Solutions Architect Associate (SAA-C03) and AWS Certified Developer Associate (DVA-C02). Available through Coursera AWS Cloud Specializations and Simplilearn Cloud Architect Masters Program. Key topics include AWS EC2, S3, IAM Security, VPC Networking, DynamoDB, RDS PostgreSQL, AWS Lambda serverless, SQS/SNS messaging, CloudWatch monitoring, and Well-Architected Framework high availability.",
+    "url": "https://www.coursera.org/professional-certificates/aws-cloud-solutions-architect",
+    "category": "Certifications",
+    "tags": "AWS, Cloud, Certifications, Coursera, Simplilearn, DevOps, Solutions Architect",
+    "author": "AWS Training & Certification"
+  },
+  {
+    "title": "Google Cloud Professional Cloud Architect & Data Engineer (Coursera & Google)",
+    "content": "Complete preparation path for Google Cloud (GCP) Professional Certifications available on Coursera and Google Cloud Skills Boost. Covers Google Compute Engine (GCE), Google Kubernetes Engine (GKE), Cloud Spanner, BigQuery data analytics, Cloud Pub/Sub event streaming, Cloud Run serverless containers, IAM role governance, and multi-region disaster recovery architecture for enterprise applications.",
+    "url": "https://www.coursera.org/professional-certificates/gcp-cloud-architect",
+    "category": "Certifications",
+    "tags": "Google Cloud, GCP, Certifications, Coursera, BigQuery, Kubernetes, Cloud Architect",
+    "author": "Google Cloud Training"
+  },
+  {
+    "title": "Oracle Certified Professional: Java SE 21 Developer (1Z0-830) Certification",
+    "content": "Official guide for the industry-standard Oracle Certified Professional (OCP) Java SE 21 Developer (Exam 1Z0-830) certification available via Coursera, Simplilearn, and Oracle University. Master advanced Java language features: Virtual Threads, Pattern Matching for switch and records, Sealed Classes, Generics, Stream API parallelism, Concurrency primitives, File I/O (NIO.2), Localization, and Secure Coding Guidelines.",
+    "url": "https://education.oracle.com/java-se-21-developer-professional/pexam_1Z0-830",
+    "category": "Certifications",
+    "tags": "Java, Oracle, Certifications, Java 21, OCP, Simplilearn, Coursera, Backend",
+    "author": "Oracle University"
+  },
+  {
+    "title": "Certified Kubernetes Administrator (CKA) & CKAD (CNCF & Simplilearn)",
+    "content": "Preparation guide for the Linux Foundation & Cloud Native Computing Foundation (CNCF) Certified Kubernetes Administrator (CKA) and Certified Kubernetes Application Developer (CKAD) certifications, accessible on Simplilearn and Coursera. Focuses on cluster architecture, installation with kubeadm, etcd backup/restore, networking CNI plugins, RBAC authentication, StatefulSets, Ingress, PersistentVolumes, and cluster troubleshooting.",
+    "url": "https://www.simplilearn.com/certified-kubernetes-administrator-cka-certification-training",
+    "category": "Certifications",
+    "tags": "Kubernetes, CKA, CKAD, CNCF, Simplilearn, DevOps, Docker, Certifications",
+    "author": "Cloud Native Computing Foundation"
+  },
+  {
+    "title": "DeepLearning.AI Deep Learning & Generative AI Specialization (Coursera - Andrew Ng)",
+    "content": "The world-renowned Deep Learning and Generative AI with Large Language Models (LLMs) Specialization created by Andrew Ng on Coursera. Learn to build neural networks in PyTorch & TensorFlow, Convolutional Networks (CNN) for computer vision, Recurrent Networks (RNN/LSTM), Attention Mechanisms, Transformer models (BERT, GPT), Prompt Engineering, Fine-Tuning LLMs with LoRA/QLoRA, and Retrieval-Augmented Generation (RAG).",
+    "url": "https://www.coursera.org/specializations/deep-learning",
+    "category": "Certifications",
+    "tags": "Machine Learning, Deep Learning, AI, Coursera, Andrew Ng, PyTorch, Certifications",
+    "author": "DeepLearning.AI"
+  },
+  {
+    "title": "Meta Front-End & Full-Stack Developer Professional Certificate (Coursera)",
+    "content": "Comprehensive 9-course professional certificate from Meta (Facebook) on Coursera preparing developers for entry-level and staff frontend engineering roles. Curriculum covers HTML5/CSS3, JavaScript ES6, UI/UX with Figma, React, Version Control Git & GitHub, Jest unit testing, Principles of UI Design, and full-stack Capstone applications evaluated by industry standards.",
+    "url": "https://www.coursera.org/professional-certificates/meta-front-end-developer",
+    "category": "Certifications",
+    "tags": "Meta, Frontend, React, JavaScript, Coursera, Web Development, Certifications",
+    "author": "Meta Engineering Staff"
+  },
+  {
+    "title": "Microsoft Certified: Azure Solutions Architect Expert (AZ-305) (Simplilearn & Coursera)",
+    "content": "Expert-level Microsoft Azure Cloud Architecture certification (AZ-104 Azure Administrator & AZ-305 Solutions Architect) taught on Simplilearn and Coursera. Core topics: Azure Virtual Networks (VNet), Azure Kubernetes Service (AKS), Azure Cosmos DB globally distributed databases, Azure Blob Storage, Microsoft Entra ID (Azure AD), Azure Key Vault, and hybrid cloud architecture.",
+    "url": "https://www.simplilearn.com/azure-solutions-architect-training-course",
+    "category": "Certifications",
+    "tags": "Azure, Microsoft, Cloud, Certifications, Simplilearn, Coursera, Solutions Architect",
+    "author": "Microsoft Learn"
+  },
+  {
+    "title": "CompTIA Security+ & CISSP Cybersecurity Professional Certification (Simplilearn)",
+    "content": "Industry-benchmark cybersecurity certification paths (CompTIA Security+ SY0-701 & (ISC)2 CISSP) offered on Simplilearn and Coursera. Covers threat analysis, cryptographic algorithms (AES, RSA, ECC, SHA-256), Public Key Infrastructure (PKI), identity and access management (IAM), secure network architecture, incident response, zero-trust security models, and compliance (NIST, ISO 27001, GDPR).",
+    "url": "https://www.simplilearn.com/cyber-security/comptia-security-plus-certification-training",
+    "category": "Certifications",
+    "tags": "Cybersecurity, Security+, CISSP, Simplilearn, Coursera, OWASP, Certifications",
+    "author": "CompTIA & ISC2"
+  },
+  {
+    "title": "HashiCorp Certified Terraform Associate (Infrastructure as Code - IaC)",
+    "content": "Official certification guide for the HashiCorp Certified Terraform Associate (003) exam available on Coursera and Udemy. Master Infrastructure as Code (IaC) principles: Terraform CLI commands, HCL configuration language, Terraform state management and remote backends (S3, Terraform Cloud), modules, variable precedence, resource lifecycle rules, and automated cloud provisioning on AWS, Azure, and GCP.",
+    "url": "https://www.hashicorp.com/certification/terraform-associate",
+    "category": "Certifications",
+    "tags": "Terraform, HashiCorp, DevOps, IaC, Cloud, AWS, Certifications",
+    "author": "HashiCorp Education"
+  },
+  {
+    "title": "IBM Data Science & AI Professional Certificate (Coursera & Simplilearn)",
+    "content": "Popular 10-course career certificate by IBM on Coursera and Simplilearn. Master Python for Data Science, SQL queries for relational databases, exploratory data analysis (EDA) with Pandas & Matplotlib, Scikit-learn machine learning algorithms (Regression, Classification, Clustering), Jupyter Notebooks, and Watson AI integration for predictive business analytics.",
+    "url": "https://www.coursera.org/professional-certificates/ibm-data-science",
+    "category": "Certifications",
+    "tags": "Data Science, IBM, Python, SQL, Machine Learning, Coursera, Simplilearn, Certifications",
+    "author": "IBM Training"
+  },
+  {
     "title": "Java 21 Virtual Threads and Structured Concurrency",
     "content": "Java 21 introduces Virtual Threads (Project Loom), dramatically simplifying concurrent programming on the JVM. Virtual threads are lightweight threads managed by the Java Virtual Machine rather than the underlying operating system. This allows applications to spawn millions of virtual threads with low memory footprint, eliminating the need for complex reactive programming paradigms. Structured concurrency further unifies task lifecycles across multiple child threads.",
     "url": "https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html",

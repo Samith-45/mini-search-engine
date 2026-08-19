@@ -9,10 +9,11 @@ import { Search, Cpu, Database, Layers, ArrowRight, Zap, Code2, ShieldCheck, Pla
 export default function LandingPage() {
   const sampleQueries = [
     'neetcode 150 roadmap',
+    'aws certification coursera',
+    'kubernetes cka simplilearn',
     'system design roadmap',
-    'leetcode dsa preparation',
-    'java 21 backend roadmap',
-    'python ai ml roadmap'
+    'oracle java 21 certification',
+    'deeplearning ai coursera'
   ];
 
   return (
