@@ -11,6 +11,8 @@ import java.util.List;
 public interface DocumentRepository extends JpaRepository<DocumentEntity, Long> {
     List<DocumentEntity> findByCategoryIgnoreCase(String category);
 
+    boolean existsByTitle(String title);
+
     @Query("SELECT DISTINCT d.category FROM DocumentEntity d WHERE d.category IS NOT NULL")
     List<String> findDistinctCategories();
 }

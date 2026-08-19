@@ -8,6 +8,14 @@
     "author": "OpenJDK Team"
   },
   {
+    "title": "Python 3.12 GIL Improvements, Asyncio, and Performance",
+    "content": "Python 3.12 introduces major performance optimizations including per-interpreter GIL (Global Interpreter Lock), faster asyncio event loops, and lower memory overhead for object dictionaries. Python is widely used in Machine Learning with PyTorch and TensorFlow, data science with Pandas and NumPy, and backend web APIs using FastAPI and Django. Type hints and PEP 695 type parameter syntax improve static typing in modern Python codebases.",
+    "url": "https://docs.python.org/3/whatsnew/3.12.html",
+    "category": "Documentation",
+    "tags": "Python, Asyncio, GIL, FastAPI, Machine Learning",
+    "author": "Python Software Foundation"
+  },
+  {
     "title": "Understanding Inverted Indexes in Information Retrieval",
     "content": "An inverted index is the fundamental data structure used by search engines to map words or terms to their occurrence locations within a collection of documents. Unlike a forward index which maps documents to words, an inverted index enables near instantaneous query candidate retrieval. Key components include dictionary term lookup, posting lists with term frequencies, positional offsets, and document frequency metrics.",
     "url": "https://searchforge.dev/articles/inverted-index-guide",
@@ -94,5 +102,45 @@
     "category": "Projects",
     "tags": "Machine Learning, Vector Search, AI, Embeddings",
     "author": "AI Research Team"
+  },
+  {
+    "title": "Docker Containers, Kubernetes Orchestration, and Microservices",
+    "content": "Docker packages applications and their dependencies into portable containers running on isolated Linux cgroups and namespaces. Kubernetes (K8s) automates deployment, autoscaling, and management of containerized workloads across server clusters using Pods, Deployments, Services, and Ingress controllers with health probes.",
+    "url": "https://kubernetes.io/docs/concepts/overview/",
+    "category": "Documentation",
+    "tags": "Docker, Kubernetes, DevOps, Cloud, Microservices",
+    "author": "Cloud Native Foundation"
+  },
+  {
+    "title": "Rust Systems Programming: Memory Safety and Zero-Cost Abstractions",
+    "content": "Rust is a systems programming language that guarantees memory safety without garbage collection through its borrow checker, ownership model, and lifetimes. Rust enables fearless concurrency, high-performance web servers with Tokio, and WebAssembly compilation with zero-cost abstractions.",
+    "url": "https://www.rust-lang.org/learn",
+    "category": "Documentation",
+    "tags": "Rust, Systems, Concurrency, Memory Safety",
+    "author": "Rust Core Team"
+  },
+  {
+    "title": "Go Concurrency: Goroutines, Channels, and CSP Pattern",
+    "content": "Go provides built-in lightweight concurrency primitives known as goroutines, managed by the Go runtime scheduler. Communication between concurrent goroutines is achieved using typed channels following Communicating Sequential Processes (CSP). Go is the standard language for cloud infrastructure and microservices.",
+    "url": "https://go.dev/doc/",
+    "category": "Documentation",
+    "tags": "Go, Golang, Concurrency, Goroutines, Backend",
+    "author": "Go Language Authors"
+  },
+  {
+    "title": "Graph Algorithms: Dijkstra, A* Pathfinding, and Topological Sort",
+    "content": "Graph theory forms the basis of computer science algorithms. Dijkstra algorithm finds the shortest path on weighted graphs using priority queues. A* incorporates heuristics for pathfinding in gaming and maps. Topological Sort orders vertices in Directed Acyclic Graphs (DAG) for build systems and task scheduling.",
+    "url": "https://searchforge.dev/articles/graph-algorithms",
+    "category": "Articles",
+    "tags": "Algorithms, Graph Theory, DSA, Pathfinding",
+    "author": "DSA Specialist"
+  },
+  {
+    "title": "Cybersecurity & Web Application Security: OWASP Top 10",
+    "content": "Web application security focuses on protecting websites against attacks including SQL Injection, Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), and Broken Access Control. Implementing HTTPS, Content Security Policy (CSP), bcrypt password hashing, and parameterized queries are mandatory security defenses.",
+    "url": "https://owasp.org/www-project-top-ten/",
+    "category": "Documentation",
+    "tags": "Security, Cybersecurity, OWASP, Authentication, Cryptography",
+    "author": "OWASP Security Foundation"
   }
 ]
