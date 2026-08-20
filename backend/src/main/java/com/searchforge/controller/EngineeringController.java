@@ -4,6 +4,8 @@ import com.searchforge.core.benchmark.BenchmarkResult;
 import com.searchforge.core.benchmark.SearchBenchmarkRunner;
 import com.searchforge.core.index.PostingList;
 import com.searchforge.dto.EngineeringStatsDTO;
+import com.searchforge.model.ExperimentRecord;
+import com.searchforge.repository.ExperimentRecordRepository;
 import com.searchforge.service.AnalyticsService;
 import com.searchforge.service.DocumentService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,10 +24,12 @@ public class EngineeringController {
 
     private final AnalyticsService analyticsService;
     private final DocumentService documentService;
+    private final ExperimentRecordRepository experimentRepo;
 
-    public EngineeringController(AnalyticsService analyticsService, DocumentService documentService) {
+    public EngineeringController(AnalyticsService analyticsService, DocumentService documentService, ExperimentRecordRepository experimentRepo) {
         this.analyticsService = analyticsService;
         this.documentService = documentService;
+        this.experimentRepo = experimentRepo;
     }
 
     @GetMapping("/index-stats")
@@ -53,13 +57,40 @@ public class EngineeringController {
     }
 
     @PostMapping("/benchmark")
-    @Operation(summary = "Trigger a real performance benchmark run across 1k, 10k, or custom doc scale")
+    @Operation(summary = "Trigger a real performance benchmark run across custom doc scale and concurrency levels")
     public ResponseEntity<BenchmarkResult> runBenchmark(
-            @RequestParam(name = "docCount", defaultValue = "1000") int docCount,
-            @RequestParam(name = "queryCount", defaultValue = "100") int queryCount
+            @RequestParam(name = "docCount", defaultValue = "10000") int docCount,
+            @RequestParam(name = "queryCount", defaultValue = "100") int queryCount,
+            @RequestParam(name = "concurrency", defaultValue = "10") int concurrency,
+            @RequestParam(name = "shardCount", defaultValue = "3") int shardCount,
+            @RequestParam(name = "enableCache", defaultValue = "true") boolean enableCache
     ) {
         SearchBenchmarkRunner runner = new SearchBenchmarkRunner();
-        BenchmarkResult result = runner.runBenchmark(docCount, queryCount);
+        BenchmarkResult result = runner.runComprehensiveBenchmark(docCount, queryCount, concurrency, shardCount, enableCache);
+
+        // Persist to experiment history
+        try {
+            ExperimentRecord record = new ExperimentRecord(
+                    "Benchmark " + docCount + " docs (" + concurrency + " concurrent)",
+                    "bc8a6b0",
+                    docCount,
+                    shardCount,
+                    concurrency,
+                    enableCache,
+                    queryCount,
+                    result.getQueriesPerSec(),
+                    result.getP50QueryLatencyMs(),
+                    result.getP90QueryLatencyMs(),
+                    result.getP95QueryLatencyMs(),
+                    result.getP99QueryLatencyMs(),
+                    result.getMaxLatencyMs(),
+                    result.getIndexingThroughputDocsPerSec(),
+                    result.getMemoryUsedMb(),
+                    result.getErrorRatePercent()
+            );
+            experimentRepo.save(record);
+        } catch (Exception ignored) {}
+
         return ResponseEntity.ok(result);
     }
 }

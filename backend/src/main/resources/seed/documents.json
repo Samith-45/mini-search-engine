@@ -1,5 +1,125 @@
 [
   {
+    "title": "ChatGPT: Conversational AI, GPT-4o Multimodal, Reasoning & Data Analysis",
+    "content": "ChatGPT is OpenAI's flagship conversational AI platform powered by frontier models including GPT-4o, GPT-4 Turbo, and OpenAI o1 reasoning model. Features include multimodal audio/video/image perception, Advanced Data Analysis (Python execution environment), Canvas for collaborative writing and coding, web browsing with real-time citations, custom GPTs, and DALL-E 3 image generation.",
+    "url": "https://chatgpt.com/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "ChatGPT, OpenAI, GPT-4o, AI, Chatbot, LLM, Reasoning, Generative AI",
+    "author": "OpenAI"
+  },
+  {
+    "title": "Claude 3.5 Sonnet & Claude Artifacts: Frontier AI Reasoning & Coding",
+    "content": "Claude is Anthropic's state-of-the-art AI assistant family (Claude 3.5 Sonnet, Claude 3 Opus, Claude 3.5 Haiku). Known for exceptional code generation, nuanced writing, and 200,000-token context windows. The Artifacts feature provides interactive side-by-side execution of React apps, SVGs, markdown documents, and HTML games generated in real time from natural language prompts.",
+    "url": "https://claude.ai/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "Claude, Anthropic, Claude 3.5 Sonnet, Artifacts, AI, LLM, Code Generation",
+    "author": "Anthropic"
+  },
+  {
+    "title": "Grok by xAI: Real-Time Intelligence, Vision & Frontier Reasoning",
+    "content": "Grok is an AI model developed by Elon Musk's xAI company (Grok-2, Grok-3). Grok features deep real-time integration with X (Twitter) live event streams, high-speed vision capabilities, truth-seeking reasoning, and mathematical problem-solving with minimal censorship and powerful coding assistance.",
+    "url": "https://x.ai/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "Grok, xAI, Elon Musk, Real-Time AI, LLM, Vision, Reasoning",
+    "author": "xAI"
+  },
+  {
+    "title": "Google Gemini 1.5 Pro & 2.0 Flash: 2-Million Token Multimodal AI Model",
+    "content": "Google Gemini is DeepMind's native multimodal AI model family designed to understand text, code, audio, image, and 1-hour video simultaneously. Gemini 1.5 Pro features a breakthrough 2,000,000 token context window capable of analyzing entire codebases and libraries in a single prompt. Integrated across Google Cloud Vertex AI, Google Workspace, and Google AI Studio.",
+    "url": "https://gemini.google.com/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "Gemini, Google, DeepMind, Multimodal, 2M Context, Vertex AI, AI",
+    "author": "Google DeepMind"
+  },
+  {
+    "title": "Bolt.new: Prompt-to-Full-Stack In-Browser AI Web App Generator",
+    "content": "Bolt.new is an AI-powered in-browser development environment created by StackBlitz. Powered by WebContainers, it generates, runs, edits, and deploys full-stack React, Next.js, Vite, and Node.js web applications directly inside your browser tab without local environment setup. It integrates npm package installation, terminal execution, and 1-click Netlify/Vercel deployment.",
+    "url": "https://bolt.new/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "Bolt.new, StackBlitz, AI App Builder, WebContainers, Next.js, Full-Stack",
+    "author": "StackBlitz"
+  },
+  {
+    "title": "Lovable.dev: Generative AI Software Engineer for Full-Stack Web Apps",
+    "content": "Lovable is an autonomous AI web app builder that transforms natural language ideas into production-ready software. Lovable automatically designs UI components with Tailwind CSS and React, connects directly to Supabase backends for PostgreSQL database storage and authentication, manages GitHub repositories, and deploys custom domain web applications in minutes.",
+    "url": "https://lovable.dev/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "Lovable, AI Builder, Supabase, React, Full-Stack, Web App Generator",
+    "author": "Lovable Team"
+  },
+  {
+    "title": "Replit & Replit Agent: Cloud IDE & Autonomous AI Software Engineer",
+    "content": "Replit is a collaborative cloud-based software development platform and IDE with built-in hosting and package management. The Replit Agent autonomously plans architectures, installs dependencies, writes backend APIs (Python, Node.js, Go), configures databases (PostgreSQL), and deploys live web applications from user prompts.",
+    "url": "https://replit.com/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "Replit, Replit Agent, Cloud IDE, AI Coding, Deployment, Full-Stack",
+    "author": "Replit Engineering"
+  },
+  {
+    "title": "Cursor & Windsurf: AI-First Code Editors with Deep Codebase Indexing",
+    "content": "Cursor (built on VS Code fork) and Windsurf (Codeium) are next-generation AI-first code editors. They index your entire local repository using AST vector embeddings, allowing developers to generate multi-file edits, debug compiler errors, refactor legacy codebases, and use terminal commands through natural language prompts.",
+    "url": "https://www.cursor.com/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "Cursor, Windsurf, AI IDE, Code Editor, Copilot, VS Code, Software Engineering",
+    "author": "Anysphere & Codeium"
+  },
+  {
+    "title": "Suno AI & Udio: Generative Music Creation & Full-Track AI Audio Synthesis",
+    "content": "Suno AI and Udio are breakthrough generative audio systems that turn text prompts and lyrics into complete radio-quality songs across any musical genre (Rock, Electronic, Pop, Classical, Hip-hop). They generate authentic vocals, instrumental arrangements, mixing, and mastering in seconds.",
+    "url": "https://suno.com/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "Suno, Udio, AI Music, Audio Generation, Generative AI, Music",
+    "author": "Suno AI Team"
+  },
+  {
+    "title": "Higgsfield AI & Runway Gen-3: Cinema-Grade Generative Video & Motion",
+    "content": "Higgsfield AI, Runway Gen-3 Alpha, and OpenAI Sora represent state-of-the-art text-to-video and image-to-video generative AI models. Higgsfield empowers creators with realistic character animation, dynamic camera controls, motion control physics, and high-framerate video generation for social media and cinematic filmmaking.",
+    "url": "https://higgsfield.ai/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "Higgsfield, Runway, Generative Video, AI Video, Cinema, Animation",
+    "author": "Higgsfield AI & Runway"
+  },
+  {
+    "title": "Jasper AI & Copy.ai: Enterprise Generative Marketing & Brand Voice",
+    "content": "Jasper AI and Copy.ai are enterprise AI platforms designed for marketing teams, copywriting, and content strategy. Features include brand voice memorization, SEO keyword integration with SurferSEO, multi-channel campaign generation, automated blog writing, and enterprise compliance security.",
+    "url": "https://www.jasper.ai/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "Jasper, Copy.ai, AI Marketing, Copywriting, SEO, Enterprise AI",
+    "author": "Jasper AI Inc"
+  },
+  {
+    "title": "Google Firebase: Cloud Firestore, Authentication & Serverless Backend Platform",
+    "content": "Google Firebase is a comprehensive app development platform providing Cloud Firestore NoSQL real-time database, Firebase Authentication (OAuth, SMS, Passwordless), Cloud Functions for serverless backend logic, Cloud Storage, Firebase Hosting (CDN), Crashlytics, and Remote Config for web, Android, and iOS applications.",
+    "url": "https://firebase.google.com/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "Firebase, Google, Firestore, Authentication, Cloud Functions, BaaS, Backend",
+    "author": "Google Firebase Team"
+  },
+  {
+    "title": "Supabase: The Open Source Firebase Alternative on PostgreSQL & pgvector",
+    "content": "Supabase is an open-source Backend-as-a-Service (BaaS) built on PostgreSQL. It provides instant REST and GraphQL APIs, real-time database change streams via WebSockets, built-in Authentication with Row-Level Security (RLS) policies, storage buckets, Edge Functions (Deno), and pgvector for AI embedding vector searches.",
+    "url": "https://supabase.com/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "Supabase, PostgreSQL, BaaS, Firebase Alternative, RLS, pgvector, Realtime",
+    "author": "Supabase Community"
+  },
+  {
+    "title": "UiPath: Enterprise Robotic Process Automation (RPA) & AI Automation Hub",
+    "content": "UiPath is the global market leader in Robotic Process Automation (RPA) and enterprise agentic workflow automation. UiPath Studio enables developers to build software robots (bots) that automate repetitive human tasks across legacy desktop software, web applications, SAP, and ERP systems using Document Understanding OCR, AI Computer Vision, and Process Mining.",
+    "url": "https://www.uipath.com/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "UiPath, RPA, Automation, Robotics, Enterprise, AI OCR, Process Mining",
+    "author": "UiPath Inc"
+  },
+  {
+    "title": "ElevenLabs: AI Voice Synthesis, Voice Cloning & Multilingual Dubbing",
+    "content": "ElevenLabs is the industry-leading generative voice AI platform. It provides human-like text-to-speech (TTS), low-latency conversational voice agents, instant voice cloning from short audio samples, and automated AI video dubbing with lip-sync translation across 32+ languages.",
+    "url": "https://elevenlabs.io/",
+    "category": "Popular AI & Cloud Tools",
+    "tags": "ElevenLabs, AI Voice, Text to Speech, Voice Cloning, Audio, Generative AI",
+    "author": "ElevenLabs"
+  },
+  {
     "title": "llama.cpp: High-Performance Pure C/C++ LLM Inference Engine",
     "content": "llama.cpp is a minimalist, pure C/C++ inference engine for Large Language Models (LLMs) created by Georgi Gerganov. It runs models without external dependencies or heavy Python runtimes. Using the GGUF binary format, 2-bit, 3-bit, 4-bit, 5-bit, 6-bit, and 8-bit integer quantization (k-quants), it enables running Llama 3, Mistral, DeepSeek, and Gemma models locally on standard Apple Silicon (Metal), NVIDIA CUDA, AMD ROCm, and CPU AVX-512 hardware.",
     "url": "https://github.com/ggerganov/llama.cpp",

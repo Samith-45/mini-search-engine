@@ -1,9 +1,6 @@
 package com.searchforge.core.index;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * Sorted list of PostingNode entries for a single term in the inverted index.
@@ -43,6 +40,14 @@ public class PostingList {
 
     public synchronized List<PostingNode> getNodes() {
         return Collections.unmodifiableList(new ArrayList<>(nodes));
+    }
+
+    public synchronized Set<Long> getDocumentIds() {
+        Set<Long> ids = new HashSet<>(nodes.size());
+        for (PostingNode node : nodes) {
+            ids.add(node.getDocId());
+        }
+        return ids;
     }
 
     public synchronized int getDocumentFrequency() {
