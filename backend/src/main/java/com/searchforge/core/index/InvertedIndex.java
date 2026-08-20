@@ -83,6 +83,10 @@ public class InvertedIndex {
         return Collections.unmodifiableSet(termIndex.keySet());
     }
 
+    public int getVocabularySize() {
+        return termIndex.size();
+    }
+
     public IndexMetadata getMetadata() {
         return metadata;
     }

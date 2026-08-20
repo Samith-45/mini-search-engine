@@ -156,3 +156,63 @@ export interface ExperimentRecord {
   errorRatePercent: number;
   timestamp: string;
 }
+
+export interface ConcurrencyComparisonResult {
+  threadModel: string;
+  concurrencyLevel: number;
+  totalOperations: number;
+  operationsPerSecond: number;
+  p50LatencyMs: number;
+  p95LatencyMs: number;
+  p99LatencyMs: number;
+  memoryUsedMb: number;
+  activeThreadCount: number;
+  errorCount: number;
+  notes: string;
+}
+
+export interface PerformanceProfile {
+  totalQueryLatencyMs: number;
+  tokenizationTimeUs: number;
+  cacheLookupTimeUs: number;
+  shardDispatchTimeUs: number;
+  postingTraversalTimeUs: number;
+  bm25RankingTimeUs: number;
+  topKHeapMergeTimeUs: number;
+  serializationTimeUs: number;
+  bottlenecks: Array<{
+    component: string;
+    impact: string;
+    optimization: string;
+    status: string;
+  }>;
+}
+
+export interface BM25CalculationRequest {
+  k1: number;
+  b: number;
+  termFrequency: number;
+  documentLength: number;
+  averageDocumentLength: number;
+  totalDocuments: number;
+  documentFrequency: number;
+}
+
+export interface BM25CalculationResponse {
+  idfScore: number;
+  lengthNormalizationPenalty: number;
+  saturatedTfScore: number;
+  finalBM25Score: number;
+  tfIdfBaselineScore: number;
+  mathematicalStepBreakdown: string;
+}
+
+export interface CorpusStats {
+  corpusVersion: string;
+  totalDocuments: number;
+  totalTokens: number;
+  averageDocumentLength: number;
+  uniqueTermsCount: number;
+  checksum: string;
+  lastIndexedTime: string;
+}

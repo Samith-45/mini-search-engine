@@ -27,15 +27,18 @@ export default function Header() {
     { name: 'Search', href: '/search?q=distributed+systems', icon: Search, color: 'text-sky-400' },
     { name: 'Benchmark Lab', href: '/engineering', icon: Cpu, color: 'text-indigo-400' },
     { name: 'Architecture & ADRs', href: '/architecture', icon: Layers, color: 'text-purple-400' },
-    { name: 'Knowledge Explorer', href: '/explorer', icon: Compass, color: 'text-emerald-400' },
+    { name: 'Performance', href: '/performance', icon: Activity, color: 'text-amber-400' },
+    { name: '60s Overview', href: '/overview', icon: FileCode2, color: 'text-emerald-400' },
   ];
 
   const labsNav = [
-    { name: 'Algorithm Playground', href: '/playground', icon: PlayCircle, desc: 'Interactive step-by-step tokenization & inverted index walk' },
-    { name: 'Relevance Lab (IR)', href: '/relevance', icon: Activity, desc: 'Precision@K, Recall@K, MRR & NDCG@10 evaluations' },
+    { name: 'Algorithm Playground', href: '/playground', icon: PlayCircle, desc: 'Interactive step-by-step TF-IDF & BM25 formula explorer' },
+    { name: 'Relevance Lab (IR)', href: '/relevance', icon: Activity, desc: '50-query Precision@K, Recall@K, MRR & NDCG@10 evaluations' },
     { name: 'Reliability & Fault Lab', href: '/reliability', icon: ShieldAlert, desc: 'Simulated shard kills, failover & latency injection' },
+    { name: 'Performance Investigator', href: '/performance', icon: Cpu, desc: 'Component microsecond execution breakdown & Loom benchmarks' },
     { name: 'Experiment History', href: '/experiments', icon: FlaskConical, desc: 'Persistent commit-linked benchmark run database' },
     { name: 'System Health', href: '/health', icon: HeartPulse, desc: 'Live cluster nodes, JVM heap, cache & telemetry' },
+    { name: 'Knowledge Explorer', href: '/explorer', icon: Compass, desc: 'Interactive CS topic and systems domain taxonomy' },
     { name: 'API Docs', href: '/api-docs', icon: FileCode2, desc: 'REST API endpoints, OpenAPI specs & cURL examples' }
   ];
 

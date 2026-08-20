@@ -8,7 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Cluster Topology Manager for SearchForge Distributed Search.
- * Supports dynamic configuration profiles (A: Single Node, B: Single+Cache, C: Sharded, D: Sharded+Replicas).
+ * Supports dynamic configuration profiles (A: Single Node, B: Single+Cache, C: Sharded, D: Sharded+Replicas, E: 6 Shards).
  */
 @Component
 public class DistributedClusterManager {
@@ -17,7 +17,8 @@ public class DistributedClusterManager {
         CONFIG_A_SINGLE_NODE("Single Node Baseline", 1, 0, false),
         CONFIG_B_SINGLE_NODE_CACHE("Single Node + Redis Cache", 1, 0, true),
         CONFIG_C_SHARDED("3 Search Shards (Hash-Partitioned)", 3, 0, true),
-        CONFIG_D_SHARDED_REPLICATED("3 Shards + 3 Replicas (High Availability)", 3, 3, true);
+        CONFIG_D_SHARDED_REPLICATED("3 Shards + 3 Replicas (High Availability)", 3, 3, true),
+        CONFIG_E_SIX_SHARDS_REPLICATED("6 Shards + 6 Replicas (High Throughput Scale)", 6, 6, true);
 
         private final String displayName;
         private final int primaryShards;
