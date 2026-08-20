@@ -57,31 +57,41 @@ export async function fetchAutocomplete(prefix: string, limit = 5): Promise<stri
     return await res.json();
   } catch (err) {
     const defaultTerms = [
-      'chatgpt gpt-4o openai conversational ai',
-      'claude 3.5 sonnet anthropic artifacts',
-      'grok xai elon musk real-time vision',
-      'google gemini 2.0 flash multimodal deepmind',
+      'google gemini 3.7 flash hybrid reasoning thinking model',
+      'google gemini 3.7 pro deep thinking multimodal',
+      'google gemini 2.0 flash realtime audio vision streaming',
+      'google gemini 1.5 pro 2m token context window',
+      'claude 3.7 sonnet hybrid thinking reasoning anthropic',
+      'claude 3.5 sonnet artifacts react code generation',
+      'claude 3 opus claude fable deep research storytelling',
+      'claude 3.5 haiku fast lightweight intelligence',
+      'openai o1 o3-mini reasoning math coding',
+      'chatgpt gpt-4.5 orion gpt-4o multimodal voice vision',
+      'chatgpt canvas python advanced data analysis',
+      'openai sora generative cinema video simulation',
+      'grok 3 xai colossus h100 benchmark leader',
+      'grok 2 grok vision real-time twitter intelligence',
+      'deepseek r1 reasoning open weights reinforcement learning',
+      'deepseek v3 671b moe multi-head latent attention mla',
+      'meta llama 3.3 70b llama 3.1 405b open source',
+      'mistral large 2 pixtral large codestral mistral ai',
+      'alibaba qwen 2.5 max qwq 32b reasoning',
       'bolt.new stackblitz webcontainers ai app builder',
       'lovable.dev supabase full-stack web app',
-      'replit agent cloud ide ghostwriter',
-      'cursor windsurf ai code editor',
-      'suno ai udio generative music synthesis',
-      'higgsfield runway gen-3 video generative ai',
-      'jasper ai copy.ai marketing copywriting',
-      'google firebase firestore authentication baas',
-      'supabase open source firebase postgresql',
-      'uipath robotic process automation rpa',
-      'elevenlabs ai voice synthesis cloning',
-      'llama.cpp pure c++ llm inference',
-      'ollama local ai models deepseek',
-      'vllm pagedattention high throughput',
-      'deepseek r1 reasoning architecture moe',
-      'langchain langgraph multi-agent ai',
-      'llamaindex rag retrieval augmented generation',
+      'cursor windsurf ai code editor deep indexing',
+      'replit agent devin autonomous ai software engineer',
+      'suno ai v4 udio 1.5 generative music synthesis',
+      'runway gen-3 alpha kling ai luma dream machine higgsfield',
+      'midjourney v6.1 flux.1 black forest labs photorealistic',
+      'elevenlabs ai voice synthesis voice cloning',
+      'llama.cpp pure c++ gguf llm inference metal cuda',
+      'ollama local ai models deepseek llama 3',
+      'vllm pagedattention high throughput serving',
       'tensorrt-llm triton inference server nvidia',
       'flashattention-2 fast cuda attention kernels',
-      'pytorch 2.0 torchdynamo compiler',
-      'milvus qdrant vector database hnsw',
+      'langchain langgraph multi-agent ai state graphs',
+      'llamaindex rag retrieval augmented generation',
+      'milvus qdrant vector database hnsw pgvector',
       'coursera aws cloud solutions architect',
       'simplilearn kubernetes cka certification',
       'oracle java 21 developer certification 1z0-830',
@@ -501,42 +511,177 @@ interface RawDoc {
 export const ALL_DOCUMENTS: RawDoc[] = [
   {
     id: 1,
-    title: "ChatGPT: Conversational AI, GPT-4o Multimodal, Reasoning & Data Analysis",
-    content: "ChatGPT is OpenAI's flagship conversational AI platform powered by frontier models including GPT-4o, GPT-4 Turbo, and OpenAI o1 reasoning model. Features include multimodal audio/video/image perception, Advanced Data Analysis (Python execution environment), Canvas for collaborative writing and coding, web browsing with real-time citations, custom GPTs, and DALL-E 3 image generation.",
-    url: "https://chatgpt.com/",
+    title: "Google Gemini 3.7 Flash & 3.7 Pro: Hybrid Reasoning & Dynamic Thinking Mode",
+    content: "Google Gemini 3.7 Flash and 3.7 Pro represent Google DeepMind's frontier hybrid reasoning multimodal models. Gemini 3.7 introduces a breakthrough architecture that dynamically balances instant, low-latency generation with configurable extended chain-of-thought thinking for complex mathematics, competitive coding, and multi-step scientific deduction. Features include 1,000,000+ token context windows, native audio/video/image perception, Google Search grounding, Python code execution sandbox, and integration into Google AI Studio and Vertex AI.",
+    url: "https://gemini.google.com/",
     category: "Popular AI & Cloud Tools",
-    tags: "ChatGPT, OpenAI, GPT-4o, AI, Chatbot, LLM, Reasoning, Generative AI",
-    author: "OpenAI"
+    tags: "Gemini 3.7, Gemini 3.7 Flash, Gemini 3.7 Pro, Google, DeepMind, Hybrid Reasoning, Thinking Model, Multimodal, Vertex AI",
+    author: "Google DeepMind"
   },
   {
     id: 2,
-    title: "Claude 3.5 Sonnet & Claude Artifacts: Frontier AI Reasoning & Coding",
-    content: "Claude is Anthropic's state-of-the-art AI assistant family (Claude 3.5 Sonnet, Claude 3 Opus, Claude 3.5 Haiku). Known for exceptional code generation, nuanced writing, and 200,000-token context windows. The Artifacts feature provides interactive side-by-side execution of React apps, SVGs, markdown documents, and HTML games generated in real time from natural language prompts.",
-    url: "https://claude.ai/",
+    title: "Google Gemini 2.0 Flash & Pro: Real-Time Multimodal Streaming & Native Tool Calling",
+    content: "Google Gemini 2.0 Flash is DeepMind's high-speed multimodal model optimized for real-time agentic experiences, ultra-low latency audio-to-audio conversations, vision streaming, and structured tool calling. It supports bidirectional audio/video streams, native spatial understanding, live camera analysis, Google Maps & Search integration, and high-throughput production API workloads.",
+    url: "https://ai.google.dev/",
     category: "Popular AI & Cloud Tools",
-    tags: "Claude, Anthropic, Claude 3.5 Sonnet, Artifacts, AI, LLM, Code Generation",
-    author: "Anthropic"
+    tags: "Gemini 2.0, Gemini Flash, Google DeepMind, Multimodal, Real-Time Audio, Tool Calling, Agents",
+    author: "Google DeepMind"
   },
   {
     id: 3,
-    title: "Grok by xAI: Real-Time Intelligence, Vision & Frontier Reasoning",
-    content: "Grok is an AI model developed by Elon Musk's xAI company (Grok-2, Grok-3). Grok features deep real-time integration with X (Twitter) live event streams, high-speed vision capabilities, truth-seeking reasoning, and mathematical problem-solving with minimal censorship and powerful coding assistance.",
-    url: "https://x.ai/",
+    title: "Google Gemini 1.5 Pro & 1.5 Flash: 2-Million Token Long-Context Multimodal Model",
+    content: "Google Gemini 1.5 Pro revolutionized large language models by introducing a massive 2,000,000 token context window. It can process 1 hour of video, 11 hours of audio, 30,000 lines of codebase, or 700,000 words in a single prompt with 99%+ needle-in-a-haystack retrieval accuracy across Vertex AI and Gemini Advanced.",
+    url: "https://deepmind.google/technologies/gemini/pro/",
     category: "Popular AI & Cloud Tools",
-    tags: "Grok, xAI, Elon Musk, Real-Time AI, LLM, Vision, Reasoning",
-    author: "xAI"
+    tags: "Gemini 1.5 Pro, Gemini 1.5 Flash, 2M Context, Long Context, Multimodal, DeepMind, Vertex AI",
+    author: "Google DeepMind"
   },
   {
     id: 4,
-    title: "Google Gemini 1.5 Pro & 2.0 Flash: 2-Million Token Multimodal AI Model",
-    content: "Google Gemini is DeepMind's native multimodal AI model family designed to understand text, code, audio, image, and 1-hour video simultaneously. Gemini 1.5 Pro features a breakthrough 2,000,000 token context window capable of analyzing entire codebases and libraries in a single prompt. Integrated across Google Cloud Vertex AI, Google Workspace, and Google AI Studio.",
-    url: "https://gemini.google.com/",
+    title: "Google Gemini Nano & Ultra: Edge On-Device & Enterprise Scale AI",
+    content: "Google Gemini Nano brings native on-device neural processing to Android (Pixel devices) for offline summarization, smart reply, and voice transcription without cloud network calls. Gemini Ultra delivers dense frontier compute for enterprise data processing, scientific discovery, and complex agentic reasoning.",
+    url: "https://deepmind.google/technologies/gemini/",
     category: "Popular AI & Cloud Tools",
-    tags: "Gemini, Google, DeepMind, Multimodal, 2M Context, Vertex AI, AI",
+    tags: "Gemini Nano, Gemini Ultra, On-Device AI, Edge Computing, Android, Enterprise AI",
     author: "Google DeepMind"
   },
   {
     id: 5,
+    title: "Claude 3.7 Sonnet: Hybrid Thinking & Instant Reasoning Frontier Model",
+    content: "Claude 3.7 Sonnet is Anthropic's flagship hybrid reasoning model. It allows developers to seamlessly switch between standard rapid responses and custom-budgeted extended thinking modes for advanced software engineering, architectural design, and complex logical proofs. Claude 3.7 Sonnet sets new state-of-the-art benchmarks on SWE-bench Verified coding and complex agentic workflows.",
+    url: "https://claude.ai/",
+    category: "Popular AI & Cloud Tools",
+    tags: "Claude 3.7, Claude 3.7 Sonnet, Anthropic, Hybrid Thinking, Extended Reasoning, SWE-bench, Coding, AI",
+    author: "Anthropic"
+  },
+  {
+    id: 6,
+    title: "Claude 3.5 Sonnet & Claude Artifacts: Frontier Coding, Vision & Interactive UI",
+    content: "Claude 3.5 Sonnet is Anthropic's renowned frontier AI model recognized for superior code generation, nuanced reasoning, and 200,000-token context windows. The Artifacts feature provides interactive side-by-side execution of React apps, SVGs, HTML5 games, and technical documentation generated in real time directly from natural language prompts.",
+    url: "https://claude.ai/",
+    category: "Popular AI & Cloud Tools",
+    tags: "Claude 3.5 Sonnet, Anthropic, Artifacts, React, Code Generation, Vision, LLM",
+    author: "Anthropic"
+  },
+  {
+    id: 7,
+    title: "Claude 3 Opus & Claude Fable: Deep Research, Nuanced Synthesis & Creative Storytelling",
+    content: "Claude 3 Opus is Anthropic's most intelligent dense model, specialized in deep academic research, cross-disciplinary synthesis, financial modeling, and complex multilingual translation. Claude Opus powers Claude Fable, enabling long-form interactive storytelling, narrative world-building, and nuanced philosophical debate with unmatched stylistic depth.",
+    url: "https://claude.ai/",
+    category: "Popular AI & Cloud Tools",
+    tags: "Claude Opus, Claude 3 Opus, Claude Fable, Anthropic, Deep Research, Storytelling, Creative AI, LLM",
+    author: "Anthropic"
+  },
+  {
+    id: 8,
+    title: "Claude 3.5 Haiku & Claude 2: Ultra-Fast Intelligence & Foundational Anthropic Models",
+    content: "Claude 3.5 Haiku delivers near-instantaneous responses with intelligence matching previous generation flagship models at a fraction of the cost and latency. Perfect for customer agents, high-volume code completion, and data extraction. Claude 2 and Claude Instant established Anthropic's Constitutional AI safety framework.",
+    url: "https://claude.ai/",
+    category: "Popular AI & Cloud Tools",
+    tags: "Claude 3.5 Haiku, Claude 2, Anthropic, Fast AI, Low Latency, Constitutional AI",
+    author: "Anthropic"
+  },
+  {
+    id: 9,
+    title: "OpenAI o1 & o3-mini: Reinforcement Learning Reasoning Models for Math & Code",
+    content: "OpenAI o1 and o3-mini are frontier reasoning models trained with large-scale reinforcement learning to perform chain-of-thought deliberation before answering. They excel in PhD-level science questions, competitive programming (Codeforces 2000+ rating), International Mathematical Olympiad (IMO) problems, and complex multi-file codebase debugging.",
+    url: "https://openai.com/o1/",
+    category: "Popular AI & Cloud Tools",
+    tags: "OpenAI o1, OpenAI o3-mini, Reasoning, Reinforcement Learning, Math, Coding, Chain of Thought",
+    author: "OpenAI"
+  },
+  {
+    id: 10,
+    title: "OpenAI GPT-4.5 (Orion) & GPT-4o: Flagship Omni Multimodal AI with Vision & Voice",
+    content: "GPT-4.5 (Orion) and GPT-4o are OpenAI's flagship frontier models. GPT-4o natively integrates text, vision, and real-time audio modalities with sub-300ms speech-to-speech dialogue latency, expressive emotion synthesis, live camera perception, Advanced Voice Mode, and vision-assisted mathematical tutoring.",
+    url: "https://chatgpt.com/",
+    category: "Popular AI & Cloud Tools",
+    tags: "GPT-4.5, GPT-4o, OpenAI, Orion, Omni Multimodal, Voice AI, Vision, ChatGPT",
+    author: "OpenAI"
+  },
+  {
+    id: 11,
+    title: "ChatGPT Canvas, Advanced Data Analysis & Custom GPTs",
+    content: "ChatGPT provides collaborative tools including Canvas for side-by-side document and code editing, Advanced Data Analysis for executing Python code in an isolated Jupyter sandbox, file uploads for spreadsheets and PDFs, web browsing with real-time citations, DALL-E 3 image generation, and the GPT Store ecosystem.",
+    url: "https://chatgpt.com/",
+    category: "Popular AI & Cloud Tools",
+    tags: "ChatGPT, Canvas, Advanced Data Analysis, Custom GPTs, Python Sandbox, DALL-E 3, OpenAI",
+    author: "OpenAI"
+  },
+  {
+    id: 12,
+    title: "OpenAI Sora: Cinema-Grade World Simulation & Generative Video Engine",
+    content: "OpenAI Sora is a diffusion transformer model that generates up to 60 seconds of high-definition video from text prompts. Sora simulates physical world dynamics, camera physics, realistic lighting, reflections, and persistent multi-character continuity across complex 3D virtual environments.",
+    url: "https://openai.com/sora/",
+    category: "Popular AI & Cloud Tools",
+    tags: "Sora, OpenAI, Generative Video, Diffusion Transformers, Cinema AI, Physics Simulation",
+    author: "OpenAI"
+  },
+  {
+    id: 13,
+    title: "Grok 3 by xAI: Frontier Reasoning on the Colossus 100k H100 GPU Cluster",
+    content: "Grok 3 is xAI's flagship AI model trained on the world's largest supercomputer (the Memphis Colossus 100,000 NVIDIA H100 cluster). Grok 3 achieves benchmark-leading scores in mathematics, coding, and scientific research. It features DeepSearch for real-time web exploration, Think mode for step-by-step reasoning, and integration with the X global network.",
+    url: "https://x.ai/",
+    category: "Popular AI & Cloud Tools",
+    tags: "Grok 3, Grok, xAI, Elon Musk, Colossus, H100, DeepSearch, Reasoning, Benchmark Leader",
+    author: "xAI"
+  },
+  {
+    id: 14,
+    title: "Grok 2 & Grok Vision: Real-Time Live Intelligence & FLUX Image Synthesis",
+    content: "Grok 2 is xAI's conversational AI integrated directly into X (Twitter). It provides real-time news extraction, unrestricted truth-seeking analysis, vision reasoning over screenshots and documents, and high-fidelity text-to-image generation powered by Black Forest Labs FLUX.1.",
+    url: "https://x.ai/",
+    category: "Popular AI & Cloud Tools",
+    tags: "Grok 2, Grok Vision, xAI, Real-Time AI, FLUX.1, Vision, Twitter",
+    author: "xAI"
+  },
+  {
+    id: 15,
+    title: "DeepSeek-R1: Open-Weights Reasoning Breakthrough via Pure Reinforcement Learning",
+    content: "DeepSeek-R1 is an open-source reasoning model created by DeepSeek that rivals OpenAI o1 and Claude 3.7. Trained using large-scale reinforcement learning (RL) without supervised fine-tuning, R1 naturally developed self-verification, reflection, and extended mathematical chains of thought. Released under MIT license with open weights, distillation models (1.5B to 70B), and complete architectural reproducibility.",
+    url: "https://github.com/deepseek-ai/DeepSeek-R1",
+    category: "AI & LLM Tools",
+    tags: "DeepSeek, DeepSeek-R1, Open Weights, Reasoning, Reinforcement Learning, MIT License, Open Source AI",
+    author: "DeepSeek AI Research"
+  },
+  {
+    id: 16,
+    title: "DeepSeek-V3: 671B MoE Architecture & Multi-Head Latent Attention (MLA)",
+    content: "DeepSeek-V3 is a 671B parameter Mixture-of-Experts (MoE) foundational model (37B active per token). It introduces Multi-head Latent Attention (MLA) to compress KV-cache memory footprints by 93%, DeepSeekMoE auxiliary-loss-free load balancing, and FP8 mixed-precision training, achieving GPT-4o level performance at 1/10th the training cost.",
+    url: "https://github.com/deepseek-ai/DeepSeek-V3",
+    category: "AI & LLM Tools",
+    tags: "DeepSeek-V3, MoE, MLA, FP8, Open Weights, High Throughput, Architecture",
+    author: "DeepSeek AI Research"
+  },
+  {
+    id: 17,
+    title: "Meta Llama 3.3 70B & Llama 3.1 405B: Frontier Open-Weights Ecosystem",
+    content: "Meta's Llama 3.3 70B and Llama 3.1 405B represent the world's most capable open-source large language models. Featuring 128,000-token context windows, group-query attention (GQA), synthetic data filtering, advanced function calling, and multilingual capabilities across 8+ languages, Llama 3 powers enterprise self-hosted AI stacks.",
+    url: "https://llama.meta.com/",
+    category: "AI & LLM Tools",
+    tags: "Llama 3.3, Llama 3.1 405B, Meta, Open Source, GQA, Tool Calling, Enterprise AI",
+    author: "Meta AI"
+  },
+  {
+    id: 18,
+    title: "Mistral Large 2, Pixtral Large & Codestral: European Frontier AI Models",
+    content: "Mistral AI delivers state-of-the-art open and commercial models including Mistral Large 2 (123B parameter flagship with 128k context), Pixtral Large (frontier multimodal vision model), Codestral (specialized 22B coding model with Fill-in-the-Middle support), and Mixtral 8x22B sparse Mixture-of-Experts.",
+    "url": "https://mistral.ai/",
+    category: "AI & LLM Tools",
+    tags: "Mistral Large 2, Pixtral, Codestral, Mixtral, Open Weights, Vision, Coding, Mistral AI",
+    author: "Mistral AI"
+  },
+  {
+    id: 19,
+    title: "Alibaba Qwen 2.5 Max & QwQ 32B Reasoning Models",
+    content: "Alibaba's Qwen 2.5 model family includes Qwen 2.5 Max (flagship cloud LLM), Qwen 2.5 Coder 32B (open coding model outperforming proprietary LLMs), and QwQ 32B (specialized reasoning model with deep step-by-step logical deduction). Supports 128k context, 29+ languages, and extensive JSON structured output.",
+    url: "https://qwenlm.github.io/",
+    category: "AI & LLM Tools",
+    tags: "Qwen 2.5, QwQ, Alibaba, Qwen Coder, Open Source, Reasoning, Coding AI",
+    author: "Alibaba Cloud Intelligence"
+  },
+  {
+    id: 20,
     title: "Bolt.new: Prompt-to-Full-Stack In-Browser AI Web App Generator",
     content: "Bolt.new is an AI-powered in-browser development environment created by StackBlitz. Powered by WebContainers, it generates, runs, edits, and deploys full-stack React, Next.js, Vite, and Node.js web applications directly inside your browser tab without local environment setup. It integrates npm package installation, terminal execution, and 1-click Netlify/Vercel deployment.",
     url: "https://bolt.new/",
@@ -545,7 +690,7 @@ export const ALL_DOCUMENTS: RawDoc[] = [
     author: "StackBlitz"
   },
   {
-    id: 6,
+    id: 21,
     title: "Lovable.dev: Generative AI Software Engineer for Full-Stack Web Apps",
     content: "Lovable is an autonomous AI web app builder that transforms natural language ideas into production-ready software. Lovable automatically designs UI components with Tailwind CSS and React, connects directly to Supabase backends for PostgreSQL database storage and authentication, manages GitHub repositories, and deploys custom domain web applications in minutes.",
     url: "https://lovable.dev/",
@@ -554,43 +699,61 @@ export const ALL_DOCUMENTS: RawDoc[] = [
     author: "Lovable Team"
   },
   {
-    id: 7,
-    title: "Replit & Replit Agent: Cloud IDE & Autonomous AI Software Engineer",
-    content: "Replit is a collaborative cloud-based software development platform and IDE with built-in hosting and package management. The Replit Agent autonomously plans architectures, installs dependencies, writes backend APIs (Python, Node.js, Go), configures databases (PostgreSQL), and deploys live web applications from user prompts.",
-    url: "https://replit.com/",
-    category: "Popular AI & Cloud Tools",
-    tags: "Replit, Replit Agent, Cloud IDE, AI Coding, Deployment, Full-Stack",
-    author: "Replit Engineering"
-  },
-  {
-    id: 8,
+    id: 22,
     title: "Cursor & Windsurf: AI-First Code Editors with Deep Codebase Indexing",
-    content: "Cursor (built on VS Code fork) and Windsurf (Codeium) are next-generation AI-first code editors. They index your entire local repository using AST vector embeddings, allowing developers to generate multi-file edits, debug compiler errors, refactor legacy codebases, and use terminal commands through natural language prompts.",
+    content: "Cursor (Anysphere) and Windsurf (Codeium) are next-generation AI-native code editors. They index your entire local repository using AST vector embeddings and semantic graphs, allowing developers to generate multi-file edits, debug compiler errors, refactor legacy codebases, and use terminal commands through natural language prompts with Claude 3.7 and GPT-4o.",
     url: "https://www.cursor.com/",
     category: "Popular AI & Cloud Tools",
-    tags: "Cursor, Windsurf, AI IDE, Code Editor, Copilot, VS Code, Software Engineering",
+    tags: "Cursor, Windsurf, Codeium, AI IDE, Code Editor, Copilot, VS Code, Software Engineering",
     author: "Anysphere & Codeium"
   },
   {
-    id: 9,
-    title: "Suno AI & Udio: Generative Music Creation & Full-Track AI Audio Synthesis",
-    content: "Suno AI and Udio are breakthrough generative audio systems that turn text prompts and lyrics into complete radio-quality songs across any musical genre (Rock, Electronic, Pop, Classical, Hip-hop). They generate authentic vocals, instrumental arrangements, mixing, and mastering in seconds.",
+    id: 23,
+    title: "Replit Agent & Devin (Cognition): Autonomous AI Software Engineers",
+    content: "Replit Agent and Devin by Cognition represent autonomous AI software engineers that execute end-to-end engineering tasks. They read issue tickets, plan architectures, write backend APIs, configure PostgreSQL databases, execute unit tests, debug runtime stack traces, and deploy production software autonomously.",
+    url: "https://replit.com/",
+    category: "Popular AI & Cloud Tools",
+    tags: "Replit Agent, Devin, Cognition, Autonomous Agents, AI Coding, Deployment, Full-Stack",
+    author: "Replit & Cognition"
+  },
+  {
+    id: 24,
+    title: "Suno AI v4 & Udio 1.5: Radio-Quality Music Generation & Full-Track Audio Synthesis",
+    content: "Suno AI v4 and Udio 1.5 are breakthrough generative audio systems that turn text prompts and lyrics into complete radio-quality songs across any musical genre (Rock, Electronic, Pop, Classical, Hip-hop). They generate authentic vocals, multi-stem instrumental arrangements, mixing, mastering, and audio stem separation in seconds.",
     url: "https://suno.com/",
     category: "Popular AI & Cloud Tools",
-    tags: "Suno, Udio, AI Music, Audio Generation, Generative AI, Music",
+    tags: "Suno, Suno v4, Udio, AI Music, Audio Generation, Generative AI, Music",
     author: "Suno AI Team"
   },
   {
-    id: 10,
-    title: "Higgsfield AI & Runway Gen-3: Cinema-Grade Generative Video & Motion",
-    content: "Higgsfield AI, Runway Gen-3 Alpha, and OpenAI Sora represent state-of-the-art text-to-video and image-to-video generative AI models. Higgsfield empowers creators with realistic character animation, dynamic camera controls, motion control physics, and high-framerate video generation for social media and cinematic filmmaking.",
-    url: "https://higgsfield.ai/",
+    id: 25,
+    title: "Runway Gen-3 Alpha, Kling AI, Luma Dream Machine & Higgsfield: Cinema Generative Video",
+    content: "Runway Gen-3 Alpha, Kling AI 1.5, Luma Dream Machine, and Higgsfield AI represent state-of-the-art generative video models. They create photorealistic 4K cinematic video clips with precise camera motions, physics simulation, character keyframing, and motion brush controls for filmmaking and VFX.",
+    url: "https://runwayml.com/",
     category: "Popular AI & Cloud Tools",
-    tags: "Higgsfield, Runway, Generative Video, AI Video, Cinema, Animation",
-    author: "Higgsfield AI & Runway"
+    tags: "Runway, Gen-3 Alpha, Kling AI, Luma Dream Machine, Higgsfield, Generative Video, Cinema AI",
+    author: "Runway & AI Video Research"
   },
   {
-    id: 11,
+    id: 26,
+    title: "Midjourney v6.1 & Black Forest Labs FLUX.1: Photorealistic Image Generation",
+    content: "Midjourney v6.1 and FLUX.1 (FLUX.1 Schnell, Dev, Pro) by Black Forest Labs represent the pinnacle of text-to-image generative models. They produce hyper-realistic human anatomy, photorealistic lighting, accurate typography rendering, and complex prompt adherence used by designers and studios worldwide.",
+    url: "https://www.midjourney.com/",
+    category: "Popular AI & Cloud Tools",
+    tags: "Midjourney, FLUX.1, Black Forest Labs, Image Generation, Diffusion Models, Generative AI",
+    author: "Midjourney & BFL"
+  },
+  {
+    id: 27,
+    title: "ElevenLabs: Human-Grade Voice Synthesis, Conversational Agents & Dubbing",
+    content: "ElevenLabs is the industry-leading generative voice AI platform. It provides human-like text-to-speech (TTS), low-latency conversational voice agents, instant voice cloning from short audio samples, sound effects generation, and automated AI video dubbing with lip-sync translation across 32+ languages.",
+    url: "https://elevenlabs.io/",
+    category: "Popular AI & Cloud Tools",
+    tags: "ElevenLabs, AI Voice, Text to Speech, Voice Cloning, Conversational AI, Audio",
+    author: "ElevenLabs"
+  },
+  {
+    id: 28,
     title: "Jasper AI & Copy.ai: Enterprise Generative Marketing & Brand Voice",
     content: "Jasper AI and Copy.ai are enterprise AI platforms designed for marketing teams, copywriting, and content strategy. Features include brand voice memorization, SEO keyword integration with SurferSEO, multi-channel campaign generation, automated blog writing, and enterprise compliance security.",
     url: "https://www.jasper.ai/",
@@ -599,7 +762,7 @@ export const ALL_DOCUMENTS: RawDoc[] = [
     author: "Jasper AI Inc"
   },
   {
-    id: 12,
+    id: 29,
     title: "Google Firebase: Cloud Firestore, Authentication & Serverless Backend Platform",
     content: "Google Firebase is a comprehensive app development platform providing Cloud Firestore NoSQL real-time database, Firebase Authentication (OAuth, SMS, Passwordless), Cloud Functions for serverless backend logic, Cloud Storage, Firebase Hosting (CDN), Crashlytics, and Remote Config for web, Android, and iOS applications.",
     url: "https://firebase.google.com/",
@@ -608,7 +771,7 @@ export const ALL_DOCUMENTS: RawDoc[] = [
     author: "Google Firebase Team"
   },
   {
-    id: 13,
+    id: 30,
     title: "Supabase: The Open Source Firebase Alternative on PostgreSQL & pgvector",
     content: "Supabase is an open-source Backend-as-a-Service (BaaS) built on PostgreSQL. It provides instant REST and GraphQL APIs, real-time database change streams via WebSockets, built-in Authentication with Row-Level Security (RLS) policies, storage buckets, Edge Functions (Deno), and pgvector for AI embedding vector searches.",
     url: "https://supabase.com/",
@@ -617,22 +780,13 @@ export const ALL_DOCUMENTS: RawDoc[] = [
     author: "Supabase Community"
   },
   {
-    id: 14,
+    id: 31,
     title: "UiPath: Enterprise Robotic Process Automation (RPA) & AI Automation Hub",
     content: "UiPath is the global market leader in Robotic Process Automation (RPA) and enterprise agentic workflow automation. UiPath Studio enables developers to build software robots (bots) that automate repetitive human tasks across legacy desktop software, web applications, SAP, and ERP systems using Document Understanding OCR, AI Computer Vision, and Process Mining.",
     url: "https://www.uipath.com/",
     category: "Popular AI & Cloud Tools",
     tags: "UiPath, RPA, Automation, Robotics, Enterprise, AI OCR, Process Mining",
     author: "UiPath Inc"
-  },
-  {
-    id: 15,
-    title: "ElevenLabs: AI Voice Synthesis, Voice Cloning & Multilingual Dubbing",
-    content: "ElevenLabs is the industry-leading generative voice AI platform. It provides human-like text-to-speech (TTS), low-latency conversational voice agents, instant voice cloning from short audio samples, and automated AI video dubbing with lip-sync translation across 32+ languages.",
-    url: "https://elevenlabs.io/",
-    category: "Popular AI & Cloud Tools",
-    tags: "ElevenLabs, AI Voice, Text to Speech, Voice Cloning, Audio, Generative AI",
-    author: "ElevenLabs"
   },
   {
     id: 16,
