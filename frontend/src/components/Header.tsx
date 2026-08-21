@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { 
   Search, 
@@ -22,6 +22,17 @@ import {
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [labsDropdownOpen, setLabsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setLabsDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const mainNav = [
     { name: 'Search', href: '/search?q=distributed+systems', icon: Search, color: 'text-sky-400' },
@@ -73,25 +84,24 @@ export default function Header() {
           ))}
 
           {/* Research & Systems Labs Dropdown */}
-          <div className="relative">
+          <div className="relative" ref={dropdownRef}>
             <button
-              onClick={() => setLabsDropdownOpen(!labsDropdownOpen)}
-              onBlur={() => setTimeout(() => setLabsDropdownOpen(false), 200)}
-              className="px-2.5 py-1.5 rounded-lg hover:text-white hover:bg-slate-850/80 transition-colors flex items-center gap-1 text-slate-300"
+              onClick={() => setLabsDropdownOpen((prev) => !prev)}
+              className="px-2.5 py-1.5 rounded-lg hover:text-white hover:bg-slate-850/80 transition-colors flex items-center gap-1 text-slate-300 focus:outline-none"
             >
               <FlaskConical className="w-3.5 h-3.5 text-amber-400" />
               <span>Systems Labs</span>
-              <ChevronDown className="w-3 h-3 ml-0.5 text-slate-400" />
+              <ChevronDown className={`w-3 h-3 ml-0.5 text-slate-400 transition-transform ${labsDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {labsDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-72 rounded-xl bg-slate-900/95 border border-slate-800 p-2 shadow-2xl backdrop-blur-xl z-50 animate-in fade-in slide-in-from-top-2">
+              <div className="absolute right-0 mt-2 w-72 rounded-xl bg-slate-900 border border-slate-800 p-2 shadow-2xl backdrop-blur-xl z-50 animate-in fade-in slide-in-from-top-2">
                 {labsNav.map((lab) => (
                   <Link
                     key={lab.name}
                     href={lab.href}
                     onClick={() => setLabsDropdownOpen(false)}
-                    className="flex items-start gap-2.5 p-2 rounded-lg hover:bg-slate-800/70 transition-colors group"
+                    className="flex items-start gap-2.5 p-2 rounded-lg hover:bg-slate-800 transition-colors group cursor-pointer"
                   >
                     <lab.icon className="w-4 h-4 text-sky-400 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
                     <div>
