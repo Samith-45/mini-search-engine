@@ -27,16 +27,14 @@ export default function EngineeringPage() {
   const [progressStatus, setProgressStatus] = useState<string>('');
 
   // Benchmark Config State
-  const [docCount, setDocCount] = useState<number>(10000);
-  const [queryCount, setQueryCount] = useState<number>(500);
-  const [concurrency, setConcurrency] = useState<number>(50);
+  const [docCount, setDocCount] = useState<number>(67);
+  const [queryCount, setQueryCount] = useState<number>(200);
+  const [concurrency, setConcurrency] = useState<number>(10);
   const [shardCount, setShardCount] = useState<number>(3);
   const [enableCache, setEnableCache] = useState<boolean>(true);
 
   useEffect(() => {
     fetchEngineeringStats().then(setStats).catch(console.error);
-    // Initial benchmark preview
-    runBenchmark(10000, 200, 20, 3, true);
   }, []);
 
   const runBenchmark = async (
@@ -128,7 +126,7 @@ export default function EngineeringPage() {
                 <span className="font-mono font-bold text-sky-400">{docCount.toLocaleString()}</span>
               </div>
               <div className="grid grid-cols-4 gap-1.5">
-                {[10000, 50000, 100000, 500000].map((val) => (
+                {[67, 10000, 50000, 100000].map((val) => (
                   <button
                     key={val}
                     onClick={() => setDocCount(val)}
@@ -138,7 +136,7 @@ export default function EngineeringPage() {
                         : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-white'
                     }`}
                   >
-                    {val >= 1000000 ? `${val / 1000000}M` : `${val / 1000}K`}
+                    {val === 67 ? '67 (Live)' : val >= 1000000 ? `${val / 1000000}M` : `${val / 1000}K`}
                   </button>
                 ))}
               </div>

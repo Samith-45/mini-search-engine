@@ -11,22 +11,29 @@ import {
   CheckCircle2, 
   RefreshCw, 
   Clock, 
-  HardDrive 
+  HardDrive,
+  AlertCircle 
 } from 'lucide-react';
-import { fetchClusterTopology, fetchEngineeringStats } from '@/lib/api';
-import { ClusterTopology, EngineeringStats } from '@/lib/types';
+import { fetchClusterTopology, fetchEngineeringStats, fetchTelemetry } from '@/lib/api';
+import { ClusterTopology, EngineeringStats, HealthTelemetry } from '@/lib/types';
 
 export default function HealthPage() {
   const [topology, setTopology] = useState<ClusterTopology | null>(null);
   const [stats, setStats] = useState<EngineeringStats | null>(null);
+  const [telemetry, setTelemetry] = useState<HealthTelemetry | null>(null);
   const [loading, setLoading] = useState(false);
 
   const loadData = async () => {
     setLoading(true);
     try {
-      const [topo, eng] = await Promise.all([fetchClusterTopology(), fetchEngineeringStats()]);
+      const [topo, eng, telem] = await Promise.all([
+        fetchClusterTopology(), 
+        fetchEngineeringStats(),
+        fetchTelemetry()
+      ]);
       setTopology(topo);
       setStats(eng);
+      setTelemetry(telem);
     } catch (err) {
       console.error(err);
     } finally {
@@ -49,14 +56,14 @@ export default function HealthPage() {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-4">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              All Cluster Subsystems Healthy & Operational
+              {telemetry ? 'Live Telemetry Active & Synchronized' : 'Connecting to Live Telemetry Subsystem...'}
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
               Live System Health & Telemetry
             </h1>
             <p className="mt-2 text-slate-400 max-w-2xl text-sm sm:text-base">
-              Real-time telemetry monitoring distributed search shard partitions, JVM memory pools, 
-              Redis cache-aside hit ratios, and background inverted index metrics.
+              Real-time verified telemetry monitoring distributed search shard partitions, JVM memory runtime, 
+              query cache hit ratios, and background inverted index metrics.
             </p>
           </div>
 
@@ -80,7 +87,9 @@ export default function HealthPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
               <Server className="w-4 h-4 text-sky-400" /> Shard Nodes
             </span>
-            <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono">100% UP</span>
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono">
+              {topology ? '100% UP' : 'OFFLINE'}
+            </span>
           </div>
           <div className="text-2xl font-extrabold font-mono text-slate-100">
             {topology?.primaryShardCount ?? 3} Primaries
@@ -96,29 +105,33 @@ export default function HealthPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
               <HardDrive className="w-4 h-4 text-purple-400" /> JVM Heap Memory
             </span>
-            <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono">HEALTHY</span>
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono">
+              {telemetry ? 'LIVE' : 'UNAVAILABLE'}
+            </span>
           </div>
           <div className="text-2xl font-extrabold font-mono text-purple-400">
-            48.6 MB
+            {telemetry ? `${telemetry.jvmHeapUsedMb} MB` : '--- MB'}
           </div>
           <div className="text-[11px] text-slate-400">
-            G1GC / Java 21 64-Bit Server VM
+            {telemetry ? `Max: ${telemetry.jvmHeapMaxMb} MB (Java 21 VM)` : 'Runtime telemetry unavailable'}
           </div>
         </div>
 
-        {/* Redis Cache */}
+        {/* Query Cache */}
         <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-3 bg-slate-900/40">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-              <Database className="w-4 h-4 text-emerald-400" /> Redis Cache
+              <Database className="w-4 h-4 text-emerald-400" /> Cache Hit Ratio
             </span>
-            <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono">CONNECTED</span>
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono">
+              {telemetry ? 'TRACKED' : 'UNAVAILABLE'}
+            </span>
           </div>
           <div className="text-2xl font-extrabold font-mono text-emerald-400">
-            84.2%
+            {telemetry ? `${telemetry.cacheHitRatio}%` : '---%'}
           </div>
           <div className="text-[11px] text-slate-400">
-            Query Cache-Aside Hit Ratio
+            {telemetry ? `${telemetry.totalQueriesLogged} Total Logged Queries` : 'Cache stats unavailable'}
           </div>
         </div>
 
@@ -128,10 +141,12 @@ export default function HealthPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
               <Cpu className="w-4 h-4 text-indigo-400" /> Virtual Threads
             </span>
-            <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono">ACTIVE</span>
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono">
+              ACTIVE
+            </span>
           </div>
           <div className="text-2xl font-extrabold font-mono text-indigo-400">
-            Loom Engine
+            Java 21 Loom
           </div>
           <div className="text-[11px] text-slate-400">
             Non-blocking scatter-gather executor

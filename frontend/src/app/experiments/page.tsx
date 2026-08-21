@@ -99,24 +99,32 @@ export default function ExperimentsPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60 font-mono">
-              {filtered.map((exp, i) => (
-                <tr key={exp.id || i} className="hover:bg-slate-900/40 transition-colors">
-                  <td className="py-3 px-4 font-sans font-semibold text-slate-200">{exp.experimentName}</td>
-                  <td className="py-3 px-4">
-                    <span className="inline-flex items-center gap-1 text-[11px] px-1.5 py-0.5 rounded bg-slate-800 text-sky-400 border border-slate-700">
-                      <GitCommit className="w-3 h-3" /> {exp.gitCommit}
-                    </span>
+              {filtered.length > 0 ? (
+                filtered.map((exp, i) => (
+                  <tr key={exp.id || i} className="hover:bg-slate-900/40 transition-colors">
+                    <td className="py-3 px-4 font-sans font-semibold text-slate-200">{exp.experimentName}</td>
+                    <td className="py-3 px-4">
+                      <span className="inline-flex items-center gap-1 text-[11px] px-1.5 py-0.5 rounded bg-slate-800 text-sky-400 border border-slate-700">
+                        <GitCommit className="w-3 h-3" /> {exp.gitCommit}
+                      </span>
+                    </td>
+                    <td className="py-3 px-4 text-slate-300">{exp.documentCount.toLocaleString()}</td>
+                    <td className="py-3 px-4 text-purple-400">{exp.shardCount}</td>
+                    <td className="py-3 px-4 text-slate-300">{exp.concurrencyLevel} threads</td>
+                    <td className="py-3 px-4 text-sky-400 font-bold">{exp.queriesPerSec.toLocaleString()}</td>
+                    <td className="py-3 px-4 text-emerald-400 font-bold">{exp.p50LatencyMs}ms</td>
+                    <td className="py-3 px-4 text-indigo-400">{exp.p95LatencyMs}ms</td>
+                    <td className="py-3 px-4 text-amber-400 font-bold">{exp.p99LatencyMs}ms</td>
+                    <td className="py-3 px-4 text-slate-400">{exp.memoryUsedMb}MB</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={10} className="py-8 text-center text-slate-400 font-sans text-xs">
+                    No verified experiments recorded yet. Run an empirical load test in <a href="/engineering" className="text-sky-400 hover:underline">Benchmark Lab</a> to record verifiable measurements.
                   </td>
-                  <td className="py-3 px-4 text-slate-300">{exp.documentCount.toLocaleString()}</td>
-                  <td className="py-3 px-4 text-purple-400">{exp.shardCount}</td>
-                  <td className="py-3 px-4 text-slate-300">{exp.concurrencyLevel} threads</td>
-                  <td className="py-3 px-4 text-sky-400 font-bold">{exp.queriesPerSec.toLocaleString()}</td>
-                  <td className="py-3 px-4 text-emerald-400 font-bold">{exp.p50LatencyMs}ms</td>
-                  <td className="py-3 px-4 text-indigo-400">{exp.p95LatencyMs}ms</td>
-                  <td className="py-3 px-4 text-amber-400 font-bold">{exp.p99LatencyMs}ms</td>
-                  <td className="py-3 px-4 text-slate-400">{exp.memoryUsedMb}MB</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>

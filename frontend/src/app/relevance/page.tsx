@@ -69,62 +69,68 @@ export default function RelevancePage() {
       </div>
 
       {/* Metrics Comparison Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {results.map((res, idx) => {
-          const isBest = res.strategyName.includes('BM25');
-          return (
-            <div 
-              key={res.strategyName} 
-              className={`glass-panel p-6 rounded-2xl border transition-all ${
-                res.strategyName === 'Field-Boosted BM25' 
-                  ? 'border-emerald-500/50 bg-emerald-950/10 shadow-xl shadow-emerald-500/5' 
-                  : 'border-slate-800 bg-slate-900/40'
-              }`}
-            >
-              <div className="flex items-center justify-between mb-4">
-                <span className="font-mono font-bold text-sm text-slate-200">{res.strategyName}</span>
-                {res.strategyName === 'Field-Boosted BM25' && (
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-mono font-bold">
-                    HIGHEST ACCURACY
-                  </span>
-                )}
-              </div>
+      {results.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {results.map((res, idx) => {
+            const isBest = res.strategyName.includes('BM25');
+            return (
+              <div 
+                key={res.strategyName} 
+                className={`glass-panel p-6 rounded-2xl border transition-all ${
+                  res.strategyName === 'Field-Boosted BM25' 
+                    ? 'border-emerald-500/50 bg-emerald-950/10 shadow-xl shadow-emerald-500/5' 
+                    : 'border-slate-800 bg-slate-900/40'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono font-bold text-sm text-slate-200">{res.strategyName}</span>
+                  {res.strategyName === 'Field-Boosted BM25' && (
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-mono font-bold">
+                      HIGHEST ACCURACY
+                    </span>
+                  )}
+                </div>
 
-              {/* Primary Metric: NDCG@10 */}
-              <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 text-center mb-6">
-                <div className="text-[11px] text-slate-400 font-mono uppercase">NDCG@10 Score</div>
-                <div className={`text-3xl font-extrabold font-mono mt-1 ${
-                  res.ndcgAt10 > 0.9 ? 'text-emerald-400' : res.ndcgAt10 > 0.85 ? 'text-sky-400' : 'text-amber-400'
-                }`}>
-                  {res.ndcgAt10}
+                {/* Primary Metric: NDCG@10 */}
+                <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 text-center mb-6">
+                  <div className="text-[11px] text-slate-400 font-mono uppercase">NDCG@10 Score</div>
+                  <div className={`text-3xl font-extrabold font-mono mt-1 ${
+                    res.ndcgAt10 > 0.9 ? 'text-emerald-400' : res.ndcgAt10 > 0.85 ? 'text-sky-400' : 'text-amber-400'
+                  }`}>
+                    {res.ndcgAt10}
+                  </div>
+                  <div className="text-[10px] text-slate-400 mt-1">Ideal Cumulative Gain ratio</div>
                 </div>
-                <div className="text-[10px] text-slate-400 mt-1">Ideal Cumulative Gain ratio</div>
-              </div>
 
-              {/* Detailed Metrics List */}
-              <div className="space-y-2.5 text-xs">
-                <div className="flex justify-between items-center p-2 rounded-lg bg-slate-900/60 border border-slate-800/60">
-                  <span className="text-slate-400">Precision@5</span>
-                  <span className="font-mono font-bold text-slate-200">{res.precisionAt5}</span>
-                </div>
-                <div className="flex justify-between items-center p-2 rounded-lg bg-slate-900/60 border border-slate-800/60">
-                  <span className="text-slate-400">Precision@10</span>
-                  <span className="font-mono font-bold text-slate-200">{res.precisionAt10}</span>
-                </div>
-                <div className="flex justify-between items-center p-2 rounded-lg bg-slate-900/60 border border-slate-800/60">
-                  <span className="text-slate-400">Recall@10</span>
-                  <span className="font-mono font-bold text-sky-400">{res.recallAt10}</span>
-                </div>
-                <div className="flex justify-between items-center p-2 rounded-lg bg-slate-900/60 border border-slate-800/60">
-                  <span className="text-slate-400">MRR (Mean Reciprocal Rank)</span>
-                  <span className="font-mono font-bold text-indigo-400">{res.meanReciprocalRank}</span>
+                {/* Detailed Metrics List */}
+                <div className="space-y-2.5 text-xs">
+                  <div className="flex justify-between items-center p-2 rounded-lg bg-slate-900/60 border border-slate-800/60">
+                    <span className="text-slate-400">Precision@5</span>
+                    <span className="font-mono font-bold text-slate-200">{res.precisionAt5}</span>
+                  </div>
+                  <div className="flex justify-between items-center p-2 rounded-lg bg-slate-900/60 border border-slate-800/60">
+                    <span className="text-slate-400">Precision@10</span>
+                    <span className="font-mono font-bold text-slate-200">{res.precisionAt10}</span>
+                  </div>
+                  <div className="flex justify-between items-center p-2 rounded-lg bg-slate-900/60 border border-slate-800/60">
+                    <span className="text-slate-400">Recall@10</span>
+                    <span className="font-mono font-bold text-slate-200">{res.recallAt10}</span>
+                  </div>
+                  <div className="flex justify-between items-center p-2 rounded-lg bg-slate-900/60 border border-slate-800/60">
+                    <span className="text-slate-400">MRR (Mean Reciprocal Rank)</span>
+                    <span className="font-mono font-bold text-indigo-400">{res.meanReciprocalRank}</span>
+                  </div>
                 </div>
               </div>
-
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="p-8 rounded-2xl border border-dashed border-slate-800 bg-slate-900/40 text-center space-y-3">
+          <p className="text-sm font-bold text-slate-200">Relevance Evaluation Engine Initializing...</p>
+          <p className="text-xs text-slate-400">Click &quot;Re-evaluate IR Metric Benchmark&quot; to execute real-time ground-truth ranking evaluations across the active corpus.</p>
+        </div>
+      )}
 
       {/* Ground Truth Evaluation Methodology */}
       <div className="glass-panel p-6 rounded-2xl border border-slate-800 space-y-4">

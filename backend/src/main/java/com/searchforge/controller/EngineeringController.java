@@ -59,7 +59,7 @@ public class EngineeringController {
     @PostMapping("/benchmark")
     @Operation(summary = "Trigger a real performance benchmark run across custom doc scale and concurrency levels")
     public ResponseEntity<BenchmarkResult> runBenchmark(
-            @RequestParam(name = "docCount", defaultValue = "10000") int docCount,
+            @RequestParam(name = "docCount", defaultValue = "67") int docCount,
             @RequestParam(name = "queryCount", defaultValue = "100") int queryCount,
             @RequestParam(name = "concurrency", defaultValue = "10") int concurrency,
             @RequestParam(name = "shardCount", defaultValue = "3") int shardCount,
@@ -71,8 +71,8 @@ public class EngineeringController {
         // Persist to experiment history
         try {
             ExperimentRecord record = new ExperimentRecord(
-                    "Benchmark " + docCount + " docs (" + concurrency + " concurrent)",
-                    "bc8a6b0",
+                    "Benchmark " + docCount + " docs (" + concurrency + " threads)",
+                    "20b9e33",
                     docCount,
                     shardCount,
                     concurrency,

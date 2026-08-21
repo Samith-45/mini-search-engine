@@ -3,6 +3,7 @@ import {
   SearchResultItem, 
   AnalyticsSummary, 
   EngineeringStats, 
+  HealthTelemetry,
   BenchmarkResult, 
   ClusterTopology, 
   ReliabilityExperimentResult, 
@@ -16,7 +17,7 @@ import {
   CorpusStats
 } from './types';
 
-export type { ConcurrencyComparisonResult, PerformanceProfile, BM25CalculationRequest, BM25CalculationResponse, CorpusStats };
+export type { ConcurrencyComparisonResult, PerformanceProfile, BM25CalculationRequest, BM25CalculationResponse, CorpusStats, HealthTelemetry };
 
 const API_BASE = typeof window !== 'undefined' 
   ? '/api/v1' 
@@ -207,6 +208,16 @@ export async function runBenchmarkApi(
   }
 }
 
+export async function fetchTelemetry(): Promise<HealthTelemetry | null> {
+  try {
+    const res = await fetch(`${API_BASE}/health/telemetry`);
+    if (!res.ok) throw new Error('Telemetry fetch failed');
+    return await res.json();
+  } catch (err) {
+    return null;
+  }
+}
+
 export async function fetchClusterTopology(): Promise<ClusterTopology> {
   try {
     const res = await fetch(`${API_BASE}/cluster/topology`);
@@ -221,14 +232,14 @@ export async function fetchClusterTopology(): Promise<ClusterTopology> {
       cacheEnabled: true,
       totalClusterDocuments: ALL_DOCUMENTS.length,
       primaryShards: [
-        { shardId: 'shard-pri-1', partitionIndex: 0, host: '10.0.1.10', port: 8080, isPrimary: true, isHealthy: true, artificialLatencyMs: 0, documentCount: 23 },
-        { shardId: 'shard-pri-2', partitionIndex: 1, host: '10.0.1.11', port: 8081, isPrimary: true, isHealthy: true, artificialLatencyMs: 0, documentCount: 22 },
-        { shardId: 'shard-pri-3', partitionIndex: 2, host: '10.0.1.12', port: 8082, isPrimary: true, isHealthy: true, artificialLatencyMs: 0, documentCount: 22 }
+        { shardId: 'shard-pri-1', partitionIndex: 0, host: '127.0.0.1', port: 8080, isPrimary: true, isHealthy: true, artificialLatencyMs: 0, documentCount: 23 },
+        { shardId: 'shard-pri-2', partitionIndex: 1, host: '127.0.0.1', port: 8081, isPrimary: true, isHealthy: true, artificialLatencyMs: 0, documentCount: 22 },
+        { shardId: 'shard-pri-3', partitionIndex: 2, host: '127.0.0.1', port: 8082, isPrimary: true, isHealthy: true, artificialLatencyMs: 0, documentCount: 22 }
       ],
       replicaShards: [
-        { shardId: 'shard-rep-1', partitionIndex: 0, host: '10.0.2.20', port: 9080, isPrimary: false, isHealthy: true, artificialLatencyMs: 0, documentCount: 23 },
-        { shardId: 'shard-rep-2', partitionIndex: 1, host: '10.0.2.21', port: 9081, isPrimary: false, isHealthy: true, artificialLatencyMs: 0, documentCount: 22 },
-        { shardId: 'shard-rep-3', partitionIndex: 2, host: '10.0.2.22', port: 9082, isPrimary: false, isHealthy: true, artificialLatencyMs: 0, documentCount: 22 }
+        { shardId: 'shard-rep-1', partitionIndex: 0, host: '127.0.0.1', port: 9080, isPrimary: false, isHealthy: true, artificialLatencyMs: 0, documentCount: 23 },
+        { shardId: 'shard-rep-2', partitionIndex: 1, host: '127.0.0.1', port: 9081, isPrimary: false, isHealthy: true, artificialLatencyMs: 0, documentCount: 22 },
+        { shardId: 'shard-rep-3', partitionIndex: 2, host: '127.0.0.1', port: 9082, isPrimary: false, isHealthy: true, artificialLatencyMs: 0, documentCount: 22 }
       ]
     };
   }
@@ -249,27 +260,12 @@ export async function runReliabilityExperiment(
   targetShardId = 'shard-pri-1', 
   injectedLatencyMs = 50
 ): Promise<ReliabilityExperimentResult> {
-  try {
-    const res = await fetch(
-      `${API_BASE}/reliability/simulate?faultAction=${encodeURIComponent(faultAction)}&targetShardId=${encodeURIComponent(targetShardId)}&injectedLatencyMs=${injectedLatencyMs}`, 
-      { method: 'POST' }
-    );
-    if (!res.ok) throw new Error('Reliability simulation failed');
-    return await res.json();
-  } catch (err) {
-    return {
-      faultAction,
-      targetShardId,
-      description: `Injected ${faultAction} on ${targetShardId}. Automatic replica failover triggered across scatter-gather router.`,
-      preFailureLatencyMs: 2.14,
-      degradedLatencyMs: 4.82,
-      postRecoveryLatencyMs: 2.20,
-      recoveryDurationMs: 3,
-      dataAvailabilityPercent: 100.0,
-      requestFailureRatePercent: 0.0,
-      analysis: 'Secondary replica shard absorbed query partition traffic seamlessly with zero data loss.'
-    };
-  }
+  const res = await fetch(
+    `${API_BASE}/reliability/simulate?faultAction=${encodeURIComponent(faultAction)}&targetShardId=${encodeURIComponent(targetShardId)}&injectedLatencyMs=${injectedLatencyMs}`, 
+    { method: 'POST' }
+  );
+  if (!res.ok) throw new Error('Reliability simulation failed: backend unavailable');
+  return await res.json();
 }
 
 export async function fetchRelevanceEvaluation(): Promise<RelevanceEvaluationResult[]> {
@@ -278,11 +274,7 @@ export async function fetchRelevanceEvaluation(): Promise<RelevanceEvaluationRes
     if (!res.ok) throw new Error('Relevance evaluation failed');
     return await res.json();
   } catch (err) {
-    return [
-      { strategyName: 'TF-IDF', precisionAt5: 0.68, precisionAt10: 0.61, recallAt10: 0.72, meanReciprocalRank: 0.74, ndcgAt10: 0.781, evaluatedQueriesCount: 5 },
-      { strategyName: 'Okapi BM25', precisionAt5: 0.88, precisionAt10: 0.82, recallAt10: 0.91, meanReciprocalRank: 0.95, ndcgAt10: 0.942, evaluatedQueriesCount: 5 },
-      { strategyName: 'Field-Boosted BM25', precisionAt5: 0.94, precisionAt10: 0.89, recallAt10: 0.96, meanReciprocalRank: 0.98, ndcgAt10: 0.978, evaluatedQueriesCount: 5 }
-    ];
+    return [];
   }
 }
 
@@ -301,7 +293,7 @@ export async function fetchADRs(): Promise<ArchitectureDecisionRecord[]> {
         problem: 'TF-IDF linearly over-weights keyword frequency and favors verbose documents.',
         optionsConsidered: ['Linear TF-IDF', 'Okapi BM25', 'Pure Vector Cosine Similarity'],
         decision: 'Adopt Okapi BM25 with k1=1.2 and b=0.75 as primary ranking function.',
-        benchmarkEvidence: 'Relevance Lab experiments show BM25 NDCG@10 of 0.942 vs 0.781 for TF-IDF (+20.6% gain).',
+        benchmarkEvidence: 'Empirically evaluated against 50 ground-truth queries in Relevance Lab.',
         positiveTradeoffs: ['Term saturation prevents keyword stuffing', 'Fair document length penalty', 'Sub-millisecond latency'],
         negativeTradeoffs: ['Requires global average doc length tracking']
       },
@@ -310,10 +302,10 @@ export async function fetchADRs(): Promise<ArchitectureDecisionRecord[]> {
         title: 'Java 21 Virtual Threads (Project Loom) for Scatter-Gather Routing',
         status: 'ACCEPTED',
         context: 'Managing concurrent search scatter-gather queries across distributed index shards.',
-        problem: 'Platform OS threads bottleneck at 200-500 concurrency due to stack memory and context switching.',
+        problem: 'Platform OS threads bottleneck under high concurrency due to stack memory and context switching.',
         optionsConsidered: ['Fixed Platform Thread Pool', 'Project Reactor WebFlux', 'Java 21 Virtual Threads'],
         decision: 'Adopt Virtual Threads for non-blocking parallel shard scatter-gather query dispatching.',
-        benchmarkEvidence: 'Reached 14,200 QPS at 500 concurrent users with 3.8ms P95 latency vs 4,800 QPS on fixed platform thread pools.',
+        benchmarkEvidence: 'Benchmarked in Performance Investigator comparing Platform Threads, Fixed Pools, and Loom.',
         positiveTradeoffs: ['Millions of virtual threads with low memory footprint', 'Synchronous clean code', 'Built-in CompletableFuture support'],
         negativeTradeoffs: ['Requires avoiding synchronized lock carrier pinning']
       }
@@ -327,11 +319,18 @@ export async function fetchExperiments(): Promise<ExperimentRecord[]> {
     if (!res.ok) throw new Error('Experiments failed');
     return await res.json();
   } catch (err) {
-    return [
-      { id: 1, experimentName: 'Baseline 10K Benchmark (Single Node)', gitCommit: 'bc8a6b0', documentCount: 10000, shardCount: 1, concurrencyLevel: 10, cacheEnabled: false, totalQueries: 500, queriesPerSec: 1420, p50LatencyMs: 1.84, p90LatencyMs: 3.20, p95LatencyMs: 4.12, p99LatencyMs: 6.80, maxLatencyMs: 11.4, indexingThroughputDocsPerSec: 85000, memoryUsedMb: 38.4, errorRatePercent: 0.0, timestamp: '2026-08-20T08:30:00' },
-      { id: 2, experimentName: 'Sharded 100K + Redis Cache (3 Shards)', gitCommit: 'bc8a6b0', documentCount: 100000, shardCount: 3, concurrencyLevel: 100, cacheEnabled: true, totalQueries: 2000, queriesPerSec: 8650, p50LatencyMs: 0.82, p90LatencyMs: 1.95, p95LatencyMs: 2.65, p99LatencyMs: 4.30, maxLatencyMs: 8.9, indexingThroughputDocsPerSec: 142000, memoryUsedMb: 64.2, errorRatePercent: 0.0, timestamp: '2026-08-20T09:15:00' },
-      { id: 3, experimentName: 'High Concurrency 1M Docs (500 Threads)', gitCommit: 'bc8a6b0', documentCount: 1000000, shardCount: 3, concurrencyLevel: 500, cacheEnabled: true, totalQueries: 10000, queriesPerSec: 14800, p50LatencyMs: 1.15, p90LatencyMs: 2.75, p95LatencyMs: 3.84, p99LatencyMs: 5.92, maxLatencyMs: 14.2, indexingThroughputDocsPerSec: 185000, memoryUsedMb: 148.0, errorRatePercent: 0.0, timestamp: '2026-08-20T10:00:00' }
-    ];
+    return [];
+  }
+}
+
+export async function fetchLatestExperiment(): Promise<ExperimentRecord | null> {
+  try {
+    const res = await fetch(`${API_BASE}/experiments/latest`);
+    if (res.status === 204) return null;
+    if (!res.ok) throw new Error('Latest experiment fetch failed');
+    return await res.json();
+  } catch (err) {
+    return null;
   }
 }
 
@@ -342,34 +341,15 @@ export async function getPerformanceProfile(): Promise<PerformanceProfile> {
     return await res.json();
   } catch (err) {
     return {
-      totalQueryLatencyMs: 1.20,
-      tokenizationTimeUs: 42.0,
-      cacheLookupTimeUs: 12.0,
-      shardDispatchTimeUs: 55.0,
-      postingTraversalTimeUs: 310.0,
-      bm25RankingTimeUs: 620.0,
-      topKHeapMergeTimeUs: 85.0,
-      serializationTimeUs: 78.0,
-      bottlenecks: [
-        {
-          component: "BM25 Ranking Loop",
-          impact: "High CPU usage on queries with >50k candidate postings",
-          optimization: "Adopted early-termination top-K scoring and candidate filtering",
-          status: "RESOLVED"
-        },
-        {
-          component: "Platform OS Thread Stacks",
-          impact: "450MB heap overhead & context switching at 500 concurrency",
-          optimization: "Migrated router dispatch to Java 21 Virtual Threads (Loom)",
-          status: "RESOLVED"
-        },
-        {
-          component: "Repeated Query Postings Scans",
-          impact: "Redundant inverted index intersection loops on frequent terms",
-          optimization: "Integrated Redis Key-Value cache-aside with 10-minute sliding TTL",
-          status: "RESOLVED"
-        }
-      ]
+      totalQueryLatencyMs: 0.0,
+      tokenizationTimeUs: 0.0,
+      cacheLookupTimeUs: 0.0,
+      shardDispatchTimeUs: 0.0,
+      postingTraversalTimeUs: 0.0,
+      bm25RankingTimeUs: 0.0,
+      topKHeapMergeTimeUs: 0.0,
+      serializationTimeUs: 0.0,
+      bottlenecks: []
     };
   }
 }
@@ -378,53 +358,9 @@ export async function runConcurrencyComparison(
   concurrency = 100, 
   totalOperations = 500
 ): Promise<ConcurrencyComparisonResult[]> {
-  try {
-    const res = await fetch(`${API_BASE}/concurrency/compare?concurrency=${concurrency}&totalOperations=${totalOperations}`, { method: 'POST' });
-    if (!res.ok) throw new Error('Concurrency comparison failed');
-    return await res.json();
-  } catch (err) {
-    return [
-      {
-        threadModel: "Fixed Platform Thread Pool (50)",
-        concurrencyLevel: concurrency,
-        totalOperations,
-        operationsPerSecond: 4850.0,
-        p50LatencyMs: 4.8,
-        p95LatencyMs: 18.5,
-        p99LatencyMs: 34.2,
-        memoryUsedMb: 184.0,
-        activeThreadCount: 50,
-        errorCount: 0,
-        notes: "Constrained worker pool leads to request queueing under high concurrency."
-      },
-      {
-        threadModel: "Platform OS Threads (1:1 Kernel)",
-        concurrencyLevel: concurrency,
-        totalOperations,
-        operationsPerSecond: 7200.0,
-        p50LatencyMs: 3.2,
-        p95LatencyMs: 24.1,
-        p99LatencyMs: 48.0,
-        memoryUsedMb: 460.0,
-        activeThreadCount: concurrency,
-        errorCount: 0,
-        notes: "Each platform thread allocates ~1MB stack memory; context-switch overhead increases with thread count."
-      },
-      {
-        threadModel: "Java 21 Virtual Threads (Project Loom)",
-        concurrencyLevel: concurrency,
-        totalOperations,
-        operationsPerSecond: 14800.0,
-        p50LatencyMs: 1.1,
-        p95LatencyMs: 3.84,
-        p99LatencyMs: 7.2,
-        memoryUsedMb: 92.0,
-        activeThreadCount: 8,
-        errorCount: 0,
-        notes: "Lightweight M:N user-mode scheduling over ForkJoinPool carrier threads with minimal heap overhead."
-      }
-    ];
-  }
+  const res = await fetch(`${API_BASE}/concurrency/compare?concurrency=${concurrency}&totalOperations=${totalOperations}`, { method: 'POST' });
+  if (!res.ok) throw new Error('Concurrency comparison failed: backend unavailable');
+  return await res.json();
 }
 
 export async function calculateBM25Playground(req: BM25CalculationRequest): Promise<BM25CalculationResponse> {

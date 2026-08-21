@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -23,6 +24,12 @@ public class ExperimentController {
     @GetMapping("/experiments")
     public ResponseEntity<List<ExperimentRecord>> listExperiments() {
         return ResponseEntity.ok(experimentRepo.findAllByOrderByTimestampDesc());
+    }
+
+    @GetMapping("/experiments/latest")
+    public ResponseEntity<ExperimentRecord> getLatestExperiment() {
+        Optional<ExperimentRecord> latest = experimentRepo.findFirstByOrderByTimestampDesc();
+        return latest.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.noContent().build());
     }
 
     @PostMapping("/experiments")

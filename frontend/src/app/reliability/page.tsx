@@ -157,77 +157,90 @@ export default function ReliabilityPage() {
         {/* Right: Resilience Report & Latency Impact */}
         <div className="lg:col-span-2 space-y-6">
           
-          {/* Key Resilience Metrics */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            <div className="glass-panel p-4 rounded-xl border border-slate-800 bg-slate-900/40">
-              <div className="text-slate-400 text-xs flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> Data Availability</div>
-              <div className="text-2xl font-extrabold text-emerald-400 font-mono mt-1">
-                {result ? `${result.dataAvailabilityPercent}%` : '100%'}
-              </div>
-              <div className="text-[10px] text-slate-400 mt-1">Zero partition loss</div>
-            </div>
-
-            <div className="glass-panel p-4 rounded-xl border border-slate-800 bg-slate-900/40">
-              <div className="text-slate-400 text-xs flex items-center gap-1.5"><AlertTriangle className="w-3.5 h-3.5 text-amber-400" /> Request Failure Rate</div>
-              <div className="text-2xl font-extrabold text-amber-400 font-mono mt-1">
-                {result ? `${result.requestFailureRatePercent}%` : '0.0%'}
-              </div>
-              <div className="text-[10px] text-slate-400 mt-1">Replica absorbed queries</div>
-            </div>
-
-            <div className="glass-panel p-4 rounded-xl border border-slate-800 bg-slate-900/40 col-span-2 sm:col-span-1">
-              <div className="text-slate-400 text-xs flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-sky-400" /> Recovery Duration</div>
-              <div className="text-2xl font-extrabold text-sky-400 font-mono mt-1">
-                {result ? `${result.recoveryDurationMs}ms` : '---'}
-              </div>
-              <div className="text-[10px] text-slate-400 mt-1">Self-healing time</div>
-            </div>
-          </div>
-
-          {/* Three-Phase Latency Transition */}
-          <div className="glass-panel p-6 rounded-2xl border border-slate-800 space-y-4">
-            <h3 className="text-sm font-bold text-slate-200 flex items-center gap-2">
-              <Activity className="w-4 h-4 text-sky-400" />
-              Three-Phase Latency Progression (Pre-Failure → Degraded Mode → Recovered)
-            </h3>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-              <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-                <div className="text-xs text-slate-400 font-mono">1. Baseline (Pre-Failure)</div>
-                <div className="text-2xl font-bold font-mono text-emerald-400 mt-1">
-                  {result ? `${result.preFailureLatencyMs}ms` : '2.14ms'}
+          {result ? (
+            <>
+              {/* Key Resilience Metrics */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <div className="glass-panel p-4 rounded-xl border border-slate-800 bg-slate-900/40">
+                  <div className="text-slate-400 text-xs flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> Data Availability</div>
+                  <div className="text-2xl font-extrabold text-emerald-400 font-mono mt-1">
+                    {result.dataAvailabilityPercent}%
+                  </div>
+                  <div className="text-[10px] text-slate-400 mt-1">Measured during fault</div>
                 </div>
-                <div className="text-[10px] text-slate-400 mt-1">All shards healthy</div>
-              </div>
 
-              <div className="p-4 rounded-xl bg-rose-950/20 border border-rose-800/40">
-                <div className="text-xs text-rose-300 font-mono">2. Degraded Mode</div>
-                <div className="text-2xl font-bold font-mono text-rose-400 mt-1">
-                  {result ? `${result.degradedLatencyMs}ms` : '4.82ms'}
+                <div className="glass-panel p-4 rounded-xl border border-slate-800 bg-slate-900/40">
+                  <div className="text-slate-400 text-xs flex items-center gap-1.5"><AlertTriangle className="w-3.5 h-3.5 text-amber-400" /> Request Failure Rate</div>
+                  <div className="text-2xl font-extrabold text-amber-400 font-mono mt-1">
+                    {result.requestFailureRatePercent}%
+                  </div>
+                  <div className="text-[10px] text-slate-400 mt-1">Replica absorbed queries</div>
                 </div>
-                <div className="text-[10px] text-rose-300/80 mt-1">Replica failover route</div>
-              </div>
 
-              <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-                <div className="text-xs text-slate-400 font-mono">3. Post-Recovery</div>
-                <div className="text-2xl font-bold font-mono text-sky-400 mt-1">
-                  {result ? `${result.postRecoveryLatencyMs}ms` : '2.20ms'}
-                </div>
-                <div className="text-[10px] text-slate-400 mt-1">Normal cluster routing</div>
-              </div>
-            </div>
-
-            {/* Experiment Description & Analysis */}
-            {result && (
-              <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2 text-xs">
-                <div className="font-bold text-slate-200">Execution Log</div>
-                <p className="text-slate-300 font-mono">{result.description}</p>
-                <div className="pt-2 border-t border-slate-800 text-emerald-400 font-mono">
-                  Analysis: {result.analysis}
+                <div className="glass-panel p-4 rounded-xl border border-slate-800 bg-slate-900/40 col-span-2 sm:col-span-1">
+                  <div className="text-slate-400 text-xs flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-sky-400" /> Recovery Duration</div>
+                  <div className="text-2xl font-extrabold text-sky-400 font-mono mt-1">
+                    {result.recoveryDurationMs}ms
+                  </div>
+                  <div className="text-[10px] text-slate-400 mt-1">Self-healing time</div>
                 </div>
               </div>
-            )}
-          </div>
+
+              {/* Three-Phase Latency Transition */}
+              <div className="glass-panel p-6 rounded-2xl border border-slate-800 space-y-4">
+                <h3 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+                  <Activity className="w-4 h-4 text-sky-400" />
+                  Three-Phase Latency Progression (Pre-Failure → Degraded Mode → Recovered)
+                </h3>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                  <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+                    <div className="text-xs text-slate-400 font-mono">1. Baseline (Pre-Failure)</div>
+                    <div className="text-2xl font-bold font-mono text-emerald-400 mt-1">
+                      {result.preFailureLatencyMs}ms
+                    </div>
+                    <div className="text-[10px] text-slate-400 mt-1">All shards healthy</div>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-rose-950/20 border border-rose-800/40">
+                    <div className="text-xs text-rose-300 font-mono">2. Degraded Mode</div>
+                    <div className="text-2xl font-bold font-mono text-rose-400 mt-1">
+                      {result.degradedLatencyMs}ms
+                    </div>
+                    <div className="text-[10px] text-rose-300/80 mt-1">Replica failover route</div>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+                    <div className="text-xs text-slate-400 font-mono">3. Post-Recovery</div>
+                    <div className="text-2xl font-bold font-mono text-sky-400 mt-1">
+                      {result.postRecoveryLatencyMs}ms
+                    </div>
+                    <div className="text-[10px] text-slate-400 mt-1">Normal cluster routing</div>
+                  </div>
+                </div>
+
+                {/* Experiment Description & Analysis */}
+                <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2 text-xs">
+                  <div className="font-bold text-slate-200">Execution Log</div>
+                  <p className="text-slate-300 font-mono">{result.description}</p>
+                  <div className="pt-2 border-t border-slate-800 text-emerald-400 font-mono">
+                    Analysis: {result.analysis}
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="glass-panel p-8 rounded-2xl border border-dashed border-slate-800 space-y-4 text-center">
+              <div className="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mx-auto text-rose-400">
+                <ShieldAlert className="w-6 h-6" />
+              </div>
+              <h3 className="text-base font-bold text-slate-200">No Verified Fault Injection Recorded</h3>
+              <p className="text-xs text-slate-400 max-w-md mx-auto leading-relaxed">
+                SearchForge does not display synthetic default numbers. Select a failure scenario on the left 
+                and click <strong>Execute Resilience Test</strong> to inject real-time faults into the distributed cluster and measure actual failover latencies.
+              </p>
+            </div>
+          )}
 
         </div>
 

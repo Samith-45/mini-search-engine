@@ -91,49 +91,9 @@ export default function PerformancePage() {
     try {
       const res = await api.runConcurrencyComparison(concurrencyLevel, totalOperations);
       setConcurrencyResults(res);
-    } catch {
-      // Fallback realistic measured numbers if backend offline
-      setConcurrencyResults([
-        {
-          threadModel: "Fixed Platform Thread Pool (50)",
-          concurrencyLevel,
-          totalOperations,
-          operationsPerSecond: 4850.0,
-          p50LatencyMs: 4.8,
-          p95LatencyMs: 18.5,
-          p99LatencyMs: 34.2,
-          memoryUsedMb: 184.0,
-          activeThreadCount: 50,
-          errorCount: 0,
-          notes: "Constrained worker pool leads to request queueing under high concurrency."
-        },
-        {
-          threadModel: "Platform OS Threads (1:1 Kernel)",
-          concurrencyLevel,
-          totalOperations,
-          operationsPerSecond: 7200.0,
-          p50LatencyMs: 3.2,
-          p95LatencyMs: 24.1,
-          p99LatencyMs: 48.0,
-          memoryUsedMb: 460.0,
-          activeThreadCount: concurrencyLevel,
-          errorCount: 0,
-          notes: "Each platform thread allocates ~1MB stack memory; context-switch overhead increases with thread count."
-        },
-        {
-          threadModel: "Java 21 Virtual Threads (Project Loom)",
-          concurrencyLevel,
-          totalOperations,
-          operationsPerSecond: 14800.0,
-          p50LatencyMs: 1.1,
-          p95LatencyMs: 3.84,
-          p99LatencyMs: 7.2,
-          memoryUsedMb: 92.0,
-          activeThreadCount: 8,
-          errorCount: 0,
-          notes: "Lightweight M:N user-mode scheduling over ForkJoinPool carrier threads with minimal heap overhead."
-        }
-      ]);
+    } catch (err) {
+      console.error('Failed to run concurrency benchmark', err);
+      setConcurrencyResults([]);
     } finally {
       setRunningBenchmark(false);
     }

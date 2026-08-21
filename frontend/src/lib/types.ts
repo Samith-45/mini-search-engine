@@ -56,6 +56,25 @@ export interface EngineeringStats {
   rankingAlgorithms: Record<string, any>;
 }
 
+export interface HealthTelemetry {
+  status: string;
+  jvmHeapUsedMb: number;
+  jvmHeapMaxMb: number;
+  jvmHeapTotalMb: number;
+  totalDocuments: number;
+  totalTokens: number;
+  vocabularySize: number;
+  primaryShards: number;
+  replicaShards: number;
+  cacheHitRatio: number;
+  totalQueriesLogged: number;
+  threadModel: string;
+  experimentCount: number;
+  latestExperiment: ExperimentRecord | null;
+  serverTimestamp: string;
+  gitCommit: string;
+}
+
 export interface BenchmarkResult {
   documentCount: number;
   indexingTimeMs: number;
