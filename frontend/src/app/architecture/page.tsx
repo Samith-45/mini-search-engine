@@ -55,9 +55,9 @@ export default function ArchitecturePage() {
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
           Distributed System Topology & ADRs
         </h1>
-        <p className="mt-2 text-slate-400 max-w-3xl leading-relaxed text-sm sm:text-base">
+        <p className="mt-2 text-slate-400 max-w-3xl leading-relaxed text-sm sm:text-base font-sans">
           Explore SearchForge&apos;s scatter-gather sharded topology, inspect dynamic cluster failover states, 
-          and review evidence-backed Architectural Decision Records (ADRs) demonstrating Google SWE-grade design choices.
+          and review evidence-backed Architectural Decision Records (ADRs) demonstrating rigorous distributed systems design choices.
         </p>
       </div>
 

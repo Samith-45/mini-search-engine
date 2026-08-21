@@ -7,12 +7,19 @@ import { fetchAutocomplete } from '@/lib/api';
 
 interface SearchInputProps {
   initialQuery?: string;
+  placeholder?: string;
   size?: 'sm' | 'md' | 'lg';
   autoFocus?: boolean;
   className?: string;
 }
 
-export default function SearchInput({ initialQuery = '', size = 'md', autoFocus = false, className = '' }: SearchInputProps) {
+export default function SearchInput({ 
+  initialQuery = '', 
+  placeholder = "Search algorithms, systems, Java, databases...", 
+  size = 'md', 
+  autoFocus = false, 
+  className = '' 
+}: SearchInputProps) {
   const router = useRouter();
   const [query, setQuery] = useState(initialQuery);
   const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -106,7 +113,7 @@ export default function SearchInput({ initialQuery = '', size = 'md', autoFocus 
             }}
             onKeyDown={handleKeyDownInput}
             onFocus={() => query.trim().length > 0 && setIsOpen(true)}
-            placeholder="Search anything (e.g. java spring, 'distributed systems', bm25)..."
+            placeholder={placeholder}
             autoFocus={autoFocus}
             className={`w-full pl-12 pr-12 ${sizeClasses} rounded-xl bg-slate-900/90 text-slate-100 border border-slate-700/80 focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 shadow-xl transition-all font-sans`}
           />
